@@ -5,6 +5,7 @@ import org.example.model.pessoa.Tipo;
 import org.example.service.Search;
 
 import java.util.*;
+import java.lang.*;
 
 public class LoginPagePTBR {
     private final String ORANGEANSI = "\u001B[34m";
@@ -17,9 +18,9 @@ public class LoginPagePTBR {
     public void menuDeEscolhas(){
         boolean continuar = true;
         do{
-            System.out.println("-------- Bem Vindo ao GuiBank -------------");
+            System.out.println("-------- Bem Vindo ao Kabum-Clone -------------");
             System.out.println(ORANGEANSI+"1 - Já é cadastrado?");
-            System.out.println("2 - Venha ser um banker!"+GOBACKTOORIGINAL);
+            System.out.println("2 - Venha ser um Kababy!"+GOBACKTOORIGINAL);
             System.out.println("--------------------------------------------");
             System.out.print(PURPLEANSI +"Informe sua resposta:"+GOBACKTOORIGINAL);
             String op = sc.nextLine();
