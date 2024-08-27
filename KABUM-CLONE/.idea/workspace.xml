@@ -6,16 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1b433943-4c93-4f5f-848a-a55b04d82889" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/controladores/userManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/control/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/dao/BankAdd.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/dao/DatabaseAdd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/dao/BankConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/dao/DatabaseConnect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/dao/BankException.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/dao/DatabaseException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/dao/BankSelect.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/dao/DatabaseSelect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/pessoa/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/pessoa/Tipo.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/user/Tipo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/service/ClassManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/service/ClassManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/service/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/service/Search.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/view/interfacePortugues/LoginPagePTBR.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/view/interfacePortugues/LoginPagePTBR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

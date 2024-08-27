@@ -2,7 +2,7 @@ package org.example.view.interfacePortugues;
 import org.example.control.UserManager;
 import org.example.model.user.User;
 import org.example.service.Criptografia;
-import org.example.service.Search;
+import org.example.control.UserSearch;
 import org.example.service.VerificaCPF;
 import org.example.service.VerificaEmail;
 
@@ -53,7 +53,7 @@ public class LoginPagePTBR {
             email = sc.nextLine();
             if(VerificaEmail.isEmailValid(email)) continuar = false;
         }while (continuar);
-        if (!Search.searchForEmail(email)){
+        if (!UserSearch.searchForEmail(email)){
             cadastro(email);
         }
     }

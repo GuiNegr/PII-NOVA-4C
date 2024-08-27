@@ -1,6 +1,4 @@
 package org.example;
-
-import org.example.service.Criptografia;
 import org.example.view.interfacePortugues.LoginPagePTBR;
 
 public class Main {
