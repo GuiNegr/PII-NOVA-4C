@@ -1,22 +1,22 @@
 package org.example.model.dao;
 
-import org.example.model.pessoa.Pessoa;
-
+import org.example.model.user.User;
+import org.example.model.dao.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class BankSelect {
+public class DatabaseSelect {
 
-    public static String returnIDpessoa(Pessoa pessoa){
+    public static String returnIDpessoa(User user){
         String url = "select * from pessoas where CPF = ?";
         String id = "";
         try(
-                Connection connection = BankConnection.obterConexao();
+                Connection connection = DatabaseConnect.obterConexao();
                 PreparedStatement preparedStatement = connection.prepareStatement(url);
         ){
-            preparedStatement.setString(1,pessoa.getCpf());
+            preparedStatement.setString(1, user.getCpf());
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 id = resultSet.getString("ID");
@@ -27,19 +27,19 @@ public class BankSelect {
             return id;
         }
     }
-    public static boolean returnIFcpfExist(String cpfOut){
-        String url = "select * from pessoas where CPF = ?";
-        String cpf = "";
+    public static boolean returnIfEmailExist(String emailOut){
+        String url = "select * from users where email = ?";
+        String email = "";
         try(
-                Connection connection = BankConnection.obterConexao();
+                Connection connection = DatabaseConnect.obterConexao();
                 PreparedStatement preparedStatement = connection.prepareStatement(url);
         ){
-            preparedStatement.setString(1,cpfOut);
+            preparedStatement.setString(1,emailOut);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
-                cpf = resultSet.getString("CPF");
+                email = resultSet.getString("email");
             }
-            if(cpf.equals(cpfOut)){
+            if(email.equals(emailOut)){
                 return true;
             }
             return false;
