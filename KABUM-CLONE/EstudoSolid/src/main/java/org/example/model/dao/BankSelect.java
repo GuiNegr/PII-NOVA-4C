@@ -27,19 +27,19 @@ public class BankSelect {
             return id;
         }
     }
-    public static boolean returnIFcpfExist(String cpfOut){
-        String url = "select * from pessoas where CPF = ?";
-        String cpf = "";
+    public static boolean returnIfEmailExist(String emailOut){
+        String url = "select * from users where email = ?";
+        String email = "";
         try(
                 Connection connection = BankConnection.obterConexao();
                 PreparedStatement preparedStatement = connection.prepareStatement(url);
         ){
-            preparedStatement.setString(1,cpfOut);
+            preparedStatement.setString(1,emailOut);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
-                cpf = resultSet.getString("CPF");
+                email = resultSet.getString("email");
             }
-            if(cpf.equals(cpfOut)){
+            if(email.equals(emailOut)){
                 return true;
             }
             return false;

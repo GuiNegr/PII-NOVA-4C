@@ -4,7 +4,7 @@ import org.example.model.dao.BankSelect;
 
 public class Search {
 
-    public static boolean searchForCPF(String cpf){
-        return BankSelect.returnIFcpfExist(cpf);
+    public static boolean searchForEmail(String cpf){
+        return BankSelect.returnIfEmailExist(cpf);
     }
 }

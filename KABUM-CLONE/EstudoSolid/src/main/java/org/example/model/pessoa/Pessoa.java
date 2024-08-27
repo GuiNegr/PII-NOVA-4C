@@ -5,16 +5,17 @@ public class Pessoa  {
     private String id;
     private String nome;
     private String cpf;
-    private String rg;
-    private String dataNascimento;
+    private String email;
+    private String senha;
     private Tipo.tipo tipo;
 
 
-    public Pessoa(String nome, String cpf, String rg, String dataNascimento, Tipo.tipo tipo) {
+
+    public Pessoa(String nome, String cpf, String email, String senha, Tipo.tipo tipo) {
         this.nome = nome;
         this.cpf = cpf;
-        this.rg = rg;
-        this.dataNascimento = dataNascimento;
+        this.email = email;
+        this.senha = senha;
         this.tipo = tipo;
     }
 
@@ -42,20 +43,20 @@ public class Pessoa  {
         this.cpf = cpf;
     }
 
-    public String getRg() {
-        return rg;
+    public String getEmail() {
+        return email;
     }
 
-    public void setRg(String rg) {
-        this.rg = rg;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getDataNascimento() {
-        return dataNascimento;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public String getTipo() {

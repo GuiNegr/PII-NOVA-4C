@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class BankConnection {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/GuiBank";
+    private static final String URL = "jdbc:mysql://localhost:3306/kabumClone";
     private static final String LOGIN = "Root";
     private static final String PASSWORD = "root";
 
