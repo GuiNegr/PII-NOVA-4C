@@ -5,27 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b433943-4c93-4f5f-848a-a55b04d82889" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/GuiBankMVC/EstudoSolid/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/GuiBankMVC/EstudoSolid/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/GuiBankMVC/EstudoSolid/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/GuiBankMVC/EstudoSolid/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/GuiBankMVC/EstudoSolid/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/GuiBankMVC/EstudoSolid/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/GuiBankMVC/EstudoSolid/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/GuiBankMVC/EstudoSolid/src/main/java/org/example/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/GuiBankMVC/EstudoSolid/src/main/java/org/example/controladores/ClienteManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/GuiBankMVC/EstudoSolid/src/main/java/org/example/model/cliente/Cliente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/GuiBankMVC/EstudoSolid/src/main/java/org/example/model/dao/BankAdd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/GuiBankMVC/EstudoSolid/src/main/java/org/example/model/dao/BankConnection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/GuiBankMVC/EstudoSolid/src/main/java/org/example/model/dao/BankException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/GuiBankMVC/EstudoSolid/src/main/java/org/example/model/dao/BankSelect.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/GuiBankMVC/EstudoSolid/src/main/java/org/example/model/funcionario/Funcionario.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/GuiBankMVC/EstudoSolid/src/main/java/org/example/model/pessoa/Pessoa.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/GuiBankMVC/EstudoSolid/src/main/java/org/example/model/pessoa/Tipo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/GuiBankMVC/EstudoSolid/src/main/java/org/example/service/ClassManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/GuiBankMVC/EstudoSolid/src/main/java/org/example/service/Search.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/GuiBankMVC/EstudoSolid/src/main/java/org/example/view/interfacePortugues/LoginPagePTBR.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Kabum-Clone-Terminal/README.md" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/controladores/ClienteManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/controladores/userManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/cliente/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/estoquista/Estoquista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/dao/BankAdd.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/dao/BankAdd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/funcionario/Funcionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/administrador/Administrador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/pessoa/Tipo.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/pessoa/Tipo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/service/ClassManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/service/ClassManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/view/interfacePortugues/LoginPagePTBR.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/view/interfacePortugues/LoginPagePTBR.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,9 +23,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2lDUL0b33YcJletSfD3Xo4nVLu7" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -46,6 +34,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/guilherme/Project/clone-kabum/KABUM-CLONE"

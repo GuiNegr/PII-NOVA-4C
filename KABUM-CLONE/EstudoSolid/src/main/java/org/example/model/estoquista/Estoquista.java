@@ -1,10 +1,10 @@
-package org.example.model.cliente;
+package org.example.model.estoquista;
 
 
 import org.example.model.pessoa.Pessoa;
 import org.example.model.pessoa.Tipo;
 
-public class Cliente extends Pessoa {
+public class Estoquista extends Pessoa {
 
 
     private String id;
@@ -13,7 +13,7 @@ public class Cliente extends Pessoa {
     private double saldo;
 
 
-    public Cliente(String nome, String cpf, String rg, String dataNascimento, Tipo.tipo tipo,String idFkPessoa, double saldo) {
+    public Estoquista(String nome, String cpf, String rg, String dataNascimento, Tipo.tipo tipo, String idFkPessoa, double saldo) {
         super(nome, cpf, rg, dataNascimento, tipo);
         this.idFkPessoa = idFkPessoa;
         this.saldo = saldo;

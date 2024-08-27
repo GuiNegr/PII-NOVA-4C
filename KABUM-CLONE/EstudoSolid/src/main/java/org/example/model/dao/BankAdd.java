@@ -1,7 +1,7 @@
 package org.example.model.dao;
 
-import org.example.model.cliente.Cliente;
-import org.example.model.funcionario.Funcionario;
+import org.example.model.estoquista.Estoquista;
+import org.example.model.administrador.Administrador;
 import org.example.model.pessoa.Pessoa;
 
 import java.sql.Connection;
@@ -30,7 +30,7 @@ public class BankAdd {
 
     }
 
-    public void adicionaCliente(Cliente pessoa){
+    public void adicionaCliente(Estoquista pessoa){
         String sqlCLiente = "insert into CLIENTE (id_fk_pessoa,saldo) values (?,?)";
         try(
                 Connection connection = BankConnection.obterConexao();
@@ -44,7 +44,7 @@ public class BankAdd {
         }
     }
 
-    public void adicionaFuncionario(Funcionario pessoa){
+    public void adicionaFuncionario(Administrador pessoa){
         String sqlCLiente = "insert into FUncionario (id_fk_pessoa,salario) values (?,?)";
         try(
                 Connection connection = BankConnection.obterConexao();

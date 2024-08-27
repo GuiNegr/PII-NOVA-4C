@@ -1,11 +1,15 @@
 package org.example.view.interfacePortugues;
-import org.example.controladores.ClienteManager;
-import org.example.model.cliente.Cliente;
+import org.example.controladores.userManager;
+import org.example.model.administrador.Administrador;
+import org.example.model.estoquista.Estoquista;
+import org.example.model.pessoa.Pessoa;
 import org.example.model.pessoa.Tipo;
 import org.example.service.Search;
 
 import java.util.*;
 import java.lang.*;
+
+import static org.example.model.pessoa.Tipo.tipo.Estoquista;
 
 public class LoginPagePTBR {
     private final String ORANGEANSI = "\u001B[34m";
@@ -43,10 +47,10 @@ public class LoginPagePTBR {
         System.out.print("Informe por favor seu cpf sem pontos para localizarmos");
         String cpf = sc.nextLine();
         if (!Search.searchForCPF(cpf)){
-            cadsatroParaClientes(cpf);
+            cadastro(cpf);
         }
     }
-    private void cadsatroParaClientes(String cpf){
+    private void cadastro(String cpf){
         System.out.println("----------------------------------------------");
         System.out.print(PURPLEANSI+"Informe seu nome: ");
         String nome = sc.nextLine();
@@ -54,8 +58,15 @@ public class LoginPagePTBR {
         String rg = sc.nextLine();
         System.out.println("Informe a data de nascimento sem pontos e barras ex: 020903: ");
         String data = sc.nextLine();
-        Cliente novoCliente = new Cliente(nome,cpf,rg,data, Tipo.tipo.Cliente,"1",0);
-        ClienteManager.addCliente(novoCliente);
+        System.out.println("Informe você está cadastrando administrador ou estoquista??");
+        String op = sc.nextLine();
+        Pessoa pessoa = null;
+        if(op.equalsIgnoreCase("estoquista")){
+            pessoa = new Estoquista(nome,cpf,rg,data, Estoquista,"1",0);
+        }else if(op.equalsIgnoreCase("administrador")){
+            pessoa = new Administrador(nome,cpf,rg,data, Tipo.tipo.Administrador,"1",0);
+        }
+        userManager.addCliente(pessoa);
         System.out.println("Seja muito bem vindo: "+nome.toUpperCase());
     }
 }

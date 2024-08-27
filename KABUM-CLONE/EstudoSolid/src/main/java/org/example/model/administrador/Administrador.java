@@ -1,15 +1,15 @@
-package org.example.model.funcionario;
+package org.example.model.administrador;
 
 import org.example.model.pessoa.Pessoa;
 import org.example.model.pessoa.Tipo;
 
-public class Funcionario extends Pessoa{
+public class Administrador extends Pessoa{
 
        private String id;
        private String idFKPessoa;
        private double salario;
 
-    public Funcionario(String nome, String cpf, String rg, String dataNascimento, Tipo.tipo tipo, String idFKPessoa,double salario) {
+    public Administrador(String nome, String cpf, String rg, String dataNascimento, Tipo.tipo tipo, String idFKPessoa, double salario) {
         super(nome, cpf, rg, dataNascimento, tipo);
         this.idFKPessoa = idFKPessoa;
         this.salario = salario;
