@@ -1,22 +1,36 @@
-package org.example.model.pessoa;
+package org.example.model.user;
 
-public class Pessoa  {
+
+public  class User {
 
     private String id;
     private String nome;
     private String cpf;
     private String email;
     private String senha;
-    private Tipo.tipo tipo;
+    private Tipo.Grupo Grupo;
+    private Status.status status;
 
-
-
-    public Pessoa(String nome, String cpf, String email, String senha, Tipo.tipo tipo) {
+    public User(String nome, String cpf, String email, String senha, Tipo.Grupo grupo, Status.status status) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.senha = senha;
-        this.tipo = tipo;
+        Grupo = grupo;
+        this.status = status;
+    }
+
+
+    public void setGrupo(Tipo.Grupo grupo) {
+        Grupo = grupo;
+    }
+
+    public String getStatus() {
+        return String.valueOf(this.status);
+    }
+
+    public void setStatus(Status.status status) {
+        this.status = status;
     }
 
     public String getId() {
@@ -60,10 +74,10 @@ public class Pessoa  {
     }
 
     public String getTipo() {
-        return tipo.toString();
+        return Grupo.toString();
     }
 
-    public void setTipo(Tipo.tipo tipo) {
-        this.tipo = tipo;
+    public void setTipo(Tipo.Grupo Grupo) {
+        this.Grupo = Grupo;
     }
 }

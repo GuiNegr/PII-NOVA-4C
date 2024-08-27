@@ -1,8 +1,6 @@
 package org.example.view.interfacePortugues;
-import org.example.controladores.userManager;
-import org.example.model.dao.BankAdd;
-import org.example.model.pessoa.Pessoa;
-import org.example.model.pessoa.Tipo;
+import org.example.control.UserManager;
+import org.example.model.user.User;
 import org.example.service.Criptografia;
 import org.example.service.Search;
 import org.example.service.VerificaCPF;
@@ -11,7 +9,9 @@ import org.example.service.VerificaEmail;
 import java.util.*;
 import java.lang.*;
 
-import static org.example.model.pessoa.Tipo.tipo.Estoquista;
+import static org.example.model.user.Status.status.HABILITADO;
+import static org.example.model.user.Tipo.Grupo.ADMINISTRADOR;
+import static org.example.model.user.Tipo.Grupo.ESTOQUISTA;
 
 public class LoginPagePTBR {
     private final String ORANGEANSI = "\u001B[34m";
@@ -58,7 +58,7 @@ public class LoginPagePTBR {
         }
     }
     private void cadastro(String email){
-        Pessoa pessoa = null;
+        User user = null;
         boolean continuar = true;
         System.out.println("----------------------------------------------");
         System.out.print(PURPLEANSI+"Informe seu nome: ");
@@ -83,15 +83,15 @@ public class LoginPagePTBR {
             String tipo = sc.nextLine();
 
             if(tipo.equalsIgnoreCase("Administrador")){
-                pessoa = new Pessoa(nome,cpf,email,senha,Tipo.tipo.Administrador);
+                user = new User(nome,cpf,email,senha, ADMINISTRADOR, HABILITADO);
                 continuar=false;
             }
             else if(tipo.equalsIgnoreCase("Estoquista")){
-                pessoa = new Pessoa(nome,cpf,email,senha, Estoquista);
+                user = new User(nome,cpf,email,senha, ESTOQUISTA, HABILITADO);
                 continuar=false;
             }
         }while (continuar);
-        System.out.println("SEJA BEM VINDO: "+pessoa.getNome().toUpperCase());
-        BankAdd.adicionaPessoa(pessoa);
+        System.out.println("SEJA BEM VINDO: "+ user.getNome().toUpperCase());
+        UserManager.addUser(user);
     }
 }

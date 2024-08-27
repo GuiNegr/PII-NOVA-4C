@@ -1,13 +1,13 @@
 package org.example.service;
-import org.example.model.dao.BankAdd;
-import org.example.model.pessoa.Pessoa;
+import org.example.dao.DatabaseAdd;
+import org.example.model.user.User;
 
 public class ClassManager {
-    private static BankAdd add;
+    private static DatabaseAdd add;
 
-    public static void adicionaNoBanco(Pessoa pessoa){
-         add = new BankAdd();
-         add.adicionaPessoa(pessoa);
+    public static void adicionaNoBanco(User user){
+         add = new DatabaseAdd();
+         add.adicionaPessoa(user);
 
     }
     public boolean verificaCpf(String cpf){

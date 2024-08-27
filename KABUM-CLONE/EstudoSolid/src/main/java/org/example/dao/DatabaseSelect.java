@@ -1,22 +1,22 @@
-package org.example.model.dao;
+package org.example.dao;
 
-import org.example.model.pessoa.Pessoa;
+import org.example.model.user.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class BankSelect {
+public class DatabaseSelect {
 
-    public static String returnIDpessoa(Pessoa pessoa){
+    public static String returnIDpessoa(User user){
         String url = "select * from pessoas where CPF = ?";
         String id = "";
         try(
-                Connection connection = BankConnection.obterConexao();
+                Connection connection = DatabaseConnect.obterConexao();
                 PreparedStatement preparedStatement = connection.prepareStatement(url);
         ){
-            preparedStatement.setString(1,pessoa.getCpf());
+            preparedStatement.setString(1, user.getCpf());
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 id = resultSet.getString("ID");
@@ -31,7 +31,7 @@ public class BankSelect {
         String url = "select * from users where email = ?";
         String email = "";
         try(
-                Connection connection = BankConnection.obterConexao();
+                Connection connection = DatabaseConnect.obterConexao();
                 PreparedStatement preparedStatement = connection.prepareStatement(url);
         ){
             preparedStatement.setString(1,emailOut);
