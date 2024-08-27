@@ -1,7 +1,7 @@
-package org.example.dao;
+package org.example.model.dao;
 
 import org.example.model.user.User;
-
+import org.example.model.dao.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

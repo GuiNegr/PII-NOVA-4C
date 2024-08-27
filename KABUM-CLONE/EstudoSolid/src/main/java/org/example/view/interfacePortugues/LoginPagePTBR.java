@@ -1,15 +1,15 @@
 package org.example.view.interfacePortugues;
 import org.example.control.UserManager;
 import org.example.model.user.User;
-import org.example.service.Criptografia;
+import org.example.model.service.Criptografia;
 import org.example.control.UserSearch;
-import org.example.service.VerificaCPF;
-import org.example.service.VerificaEmail;
+import org.example.model.user.service.VerificaCPF;
+import org.example.model.user.service.VerificaEmail;
 
 import java.util.*;
 import java.lang.*;
 
-import static org.example.model.user.Status.status.HABILITADO;
+import static org.example.model.user.Status.StatusDatabase.HABILITADO;
 import static org.example.model.user.Tipo.Grupo.ADMINISTRADOR;
 import static org.example.model.user.Tipo.Grupo.ESTOQUISTA;
 

@@ -9,15 +9,15 @@ public  class User {
     private String email;
     private String senha;
     private Tipo.Grupo Grupo;
-    private Status.status status;
+    private Status.StatusDatabase statusDatabase;
 
-    public User(String nome, String cpf, String email, String senha, Tipo.Grupo grupo, Status.status status) {
+    public User(String nome, String cpf, String email, String senha, Tipo.Grupo grupo, Status.StatusDatabase statusDatabase) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.senha = senha;
         Grupo = grupo;
-        this.status = status;
+        this.statusDatabase = statusDatabase;
     }
 
 
@@ -26,11 +26,11 @@ public  class User {
     }
 
     public String getStatus() {
-        return String.valueOf(this.status);
+        return String.valueOf(this.statusDatabase);
     }
 
-    public void setStatus(Status.status status) {
-        this.status = status;
+    public void setStatus(Status.StatusDatabase statusDatabase) {
+        this.statusDatabase = statusDatabase;
     }
 
     public String getId() {

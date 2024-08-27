@@ -1,6 +1,6 @@
 package org.example.control;
 
-import org.example.dao.DatabaseSelect;
+import org.example.model.dao.DatabaseSelect;
 
 public class UserSearch {
 

@@ -1,4 +1,4 @@
-package org.example.service;
+package org.example.model.user.service;
 
 //OQUE ESSA CLASSE FAZ, ESTÁ EXTREMAMENTE DIFICIL DE COMPREENSÃO POR BURRICE MINHA
 //MAS POR HORA PODEMOS USAR ELE JÁ QUE FAZ OQUE É PROMETIDO =D

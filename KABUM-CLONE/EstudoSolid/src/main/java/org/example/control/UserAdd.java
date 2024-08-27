@@ -1,5 +1,5 @@
 package org.example.control;
-import org.example.dao.DatabaseAdd;
+import org.example.model.dao.DatabaseAdd;
 import org.example.model.user.User;
 
 public class UserAdd {
