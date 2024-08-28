@@ -20,6 +20,18 @@ public  class User {
         this.statusDatabase = statusDatabase;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                ", Grupo=" + Grupo +
+                ", statusDatabase=" + statusDatabase +
+                '}';
+    }
 
     public void setGrupo(Tipo.Grupo grupo) {
         Grupo = grupo;

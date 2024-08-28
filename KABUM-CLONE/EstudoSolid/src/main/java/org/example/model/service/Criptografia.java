@@ -12,7 +12,7 @@ public class Criptografia {
 
         private static final char[] numeric ={'0','1','2','3','4','5','6','7','8','9'};
 
-        public static String instCod(String cod) {
+        public static String criptografe(String cod) {
 
             String aux = "";
             for (int i = 0; i < cod.length(); i++) {
@@ -64,7 +64,7 @@ public class Criptografia {
         }
 
 
-        public static String isdecodding(String descod) {
+        public static String descriptografia(String descod) {
             String aux = "";
             for (int i = 0; i < descod.length(); i++) {
                 char help = descod.charAt(i);

@@ -6,18 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="1b433943-4c93-4f5f-848a-a55b04d82889" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/control/UserAdd.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/control/UserAdd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/control/UserSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/control/UserSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/dao/DatabaseAdd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/dao/DatabaseConnect.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/dao/DatabaseException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/dao/DatabaseSelect.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/user/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/user/Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/dao/DatabaseSelect.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/dao/DatabaseSelect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/service/Criptografia.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/service/Criptografia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/service/VerificaCPF.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/service/ManipulaCPF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/service/VerificaEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/service/VerificaEmail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/model/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/service/Criptografia.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/service/VerificaCPF.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/service/VerificaEmail.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/view/interfacePortugues/LoginPagePTBR.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/view/interfacePortugues/LoginPagePTBR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/view/interfacePortugues/LoginPagePTBR.java" beforeDir="false" afterPath="$PROJECT_DIR$/EstudoSolid/src/main/java/org/example/view/interfacePortugues/Cadastro.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,10 +30,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "8500ffff",
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;8500ffff&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2lDUL0b33YcJletSfD3Xo4nVLu7" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />

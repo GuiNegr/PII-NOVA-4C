@@ -1,8 +1,8 @@
-package org.example.model.user.service;
+package org.example.model.service;
 
 //OQUE ESSA CLASSE FAZ, ESTÁ EXTREMAMENTE DIFICIL DE COMPREENSÃO POR BURRICE MINHA
 //MAS POR HORA PODEMOS USAR ELE JÁ QUE FAZ OQUE É PROMETIDO =D
-public class VerificaCPF
+public class ManipulaCPF
 {
 
     public static boolean verificaCPF(String CpfOriginal){
@@ -16,7 +16,7 @@ public class VerificaCPF
         return false;
     }
 
-    private static String arrayToString(String cpf){
+    public static String retiraPontoDoCPF(String cpf){
         int[] cpfArray = formataroCPForiginal(cpf);
         String respString = "";
         for (int a = 0; a < cpfArray.length; a++) {
