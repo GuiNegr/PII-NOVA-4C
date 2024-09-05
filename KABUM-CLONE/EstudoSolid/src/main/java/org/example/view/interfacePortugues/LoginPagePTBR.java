@@ -1,10 +1,10 @@
 package org.example.view.interfacePortugues;
 import org.example.control.UserManager;
+import org.example.model.service.VerificaEmail;
 import org.example.model.user.User;
 import org.example.model.service.Criptografia;
 import org.example.control.UserSearch;
-import org.example.model.user.service.VerificaCPF;
-import org.example.model.user.service.VerificaEmail;
+import org.example.model.service.VerificaCPF;
 
 import java.util.*;
 import java.lang.*;
@@ -19,7 +19,6 @@ public class LoginPagePTBR {
     private final String GREENANSI = "\u001B[32m";
     private final String GOBACKTOORIGINAL = "\u001B[0m";
     private static Scanner sc = new Scanner(System.in);
-
 
     public void menuDeEscolhas(){
         boolean continuar = true;

@@ -4,7 +4,6 @@ import org.example.model.dao.DatabaseSelect;
 
 public class UserSearch {
 
-    public static boolean searchForEmail(String cpf){
-        return DatabaseSelect.returnIfEmailExist(cpf);
+    public static boolean searchForEmail(String cpf){return DatabaseSelect.returnIfEmailExist(cpf);
     }
 }

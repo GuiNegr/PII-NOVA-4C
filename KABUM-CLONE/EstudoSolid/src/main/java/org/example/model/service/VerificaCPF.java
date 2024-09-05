@@ -1,4 +1,4 @@
-package org.example.model.user.service;
+package org.example.model.service;
 
 //OQUE ESSA CLASSE FAZ, ESTÁ EXTREMAMENTE DIFICIL DE COMPREENSÃO POR BURRICE MINHA
 //MAS POR HORA PODEMOS USAR ELE JÁ QUE FAZ OQUE É PROMETIDO =D
@@ -89,7 +89,6 @@ public class VerificaCPF
                     }
                 }
 
-
             } catch (Exception e) {
 
             }
@@ -128,7 +127,6 @@ public class VerificaCPF
             digito = 11 - a;
             cpfNovo[cpfNovo.length - 1] =digito;
         }
-
         return cpfNovo;
     }
 }

@@ -1,5 +1,7 @@
 package org.example.model.dao;
 
+import org.example.model.user.Status;
+import org.example.model.user.Tipo;
 import org.example.model.user.User;
 import org.example.model.dao.*;
 import java.sql.Connection;
@@ -47,5 +49,38 @@ public class DatabaseSelect {
             System.out.println(e.getMessage());
             return false;
         }
+    }
+    public static User getUserById(int userId) {
+        String sql = "SELECT id, nome, cpf, email, senha, grupo, status FROM users WHERE id = ?";
+        User user = null;
+
+        try (
+                Connection connection = DatabaseConnect.obterConexao();
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ) {
+            preparedStatement.setInt(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                Tipo.Grupo grupo = Tipo.Grupo.valueOf(resultSet.getString("grupo").toUpperCase());
+                Status.StatusDatabase statusDatabase = Status.StatusDatabase.valueOf(resultSet.getString("status").toUpperCase());
+
+                user = new User(
+                        resultSet.getString("id"),
+                        resultSet.getString("nome"),
+                        resultSet.getString("cpf"),
+                        resultSet.getString("email"),
+                        resultSet.getString("senha"),
+                        grupo,
+                        statusDatabase
+                );
+            }
+        } catch (SQLException e) {
+            System.err.println("Erro ao buscar usuário por ID: " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.err.println("Valor inválido encontrado para grupo ou status: " + e.getMessage());
+        }
+
+        return user;
     }
 }
