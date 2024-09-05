@@ -28,4 +28,20 @@ public class DatabaseAdd {
             System.out.println(e.getMessage());
         }
     }
+
+    public static void trocaSenha(String email,String senha){
+        String sql = "UPDATE users set senha = ? where email = ? ";
+        try (
+                Connection connection = DatabaseConnect.obterConexao();
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                ){
+            preparedStatement.setString(1,senha);
+            preparedStatement.setString(2,email);
+            preparedStatement.execute();
+
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+
+    }
 }

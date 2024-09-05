@@ -1,9 +1,10 @@
 package org.example;
-import org.example.view.interfacePortugues.LoginPagePTBR;
+
+
+import org.example.view.interfacePortugues.Menu;
 
 public class Main {
     public static void main(String[] args) {
-        LoginPagePTBR lg = new LoginPagePTBR();
-        lg.menuDeEscolhas();
+        Menu menu = new Menu();
     }
 }

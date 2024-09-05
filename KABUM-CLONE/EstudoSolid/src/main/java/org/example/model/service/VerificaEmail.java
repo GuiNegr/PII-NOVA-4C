@@ -1,4 +1,4 @@
-package org.example.model.user.service;
+package org.example.model.service;
 
 public class VerificaEmail {
 

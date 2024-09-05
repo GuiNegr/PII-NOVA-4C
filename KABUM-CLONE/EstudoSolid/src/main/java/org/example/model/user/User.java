@@ -3,6 +3,7 @@ package org.example.model.user;
 
 public  class User {
 
+
     private String id;
     private String nome;
     private String cpf;
@@ -20,6 +21,21 @@ public  class User {
         this.statusDatabase = statusDatabase;
     }
 
+    @Override
+    public String toString() {
+        return
+                "id:'" + id + '\'' +
+                ", nome:'" + nome + '\'' +
+                ", cpf:'" + cpf + '\'' +
+                ", email:'" + email + '\'' +
+                ", Grupo:" + Grupo +
+                ", Status:" + statusDatabase;
+
+    }
+
+    public void setGrupo(Tipo.Grupo grupo) {
+        Grupo = grupo;
+    }
 
     public String getStatus() {
         return String.valueOf(this.statusDatabase);
@@ -76,8 +92,4 @@ public  class User {
     public void setTipo(Tipo.Grupo Grupo) {
         this.Grupo = Grupo;
     }
-
-    public Tipo.Grupo getGrupo() {return Grupo;}
-
-    public void setGrupo(Tipo.Grupo grupo) {Grupo = grupo;}
 }
