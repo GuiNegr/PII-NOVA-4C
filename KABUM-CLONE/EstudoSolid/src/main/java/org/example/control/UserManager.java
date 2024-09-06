@@ -10,7 +10,15 @@ public class UserManager {
          add.adicionaPessoa(user);
 
     }
+
+    public static void alterarUsuario(User user) {
+        DatabaseAdd.updateUsuario(user);
+    }
     public static void atualizarSenha(String email, String senha){
         DatabaseAdd.trocaSenha(email,senha);
+    }
+
+    public static void atualizarSenhaById(Long id, String senha) {
+        DatabaseAdd.trocarSenhaById(senha, id);
     }
 }

@@ -37,28 +37,42 @@ public class Cadastro {
             if(VerificaEmail.isEmailValid(email)) continuar = false;
         }while (continuar);
         if (!UserSearch.procuraEmail(email)){
-            cadastro(email);
+            cadastro();
         }
     }
-    private static void cadastro(String email){
+    protected static void cadastro(){
         User user = null;
         boolean continuar = true;
+        String email;
         System.out.println("----------------------------------------------");
-        System.out.print(PURPLEANSI+"Informe seu nome: ");
+        System.out.print(PURPLEANSI+"Informe o nome: ");
         String nome = sc.nextLine();
         String cpf = "";
         do{
-            System.out.print("Informe seu cpf: ");
+            System.out.print("Informe o cpf: ");
             cpf = sc.nextLine();
             if(ManipulaCPF.verificaCPF(cpf)) continuar = false;
         }while (continuar);
         cpf = ManipulaCPF.retiraPontoDoCPF(cpf);
         continuar = true;
+        do {
+            System.out.println("Informe o email: ");
+            email = sc.next();
+            if(VerificaEmail.isEmailValid(email)) {
+                if (!UserSearch.procuraEmail(email)) {
+                    continuar = false;
+                } else {
+                    System.out.println("Email inválido ou já cadastrado. Tente novamente!");
+                }
+            }
+        } while (continuar);
         String[] senhas = new String[2];
         do{
-            System.out.print("Informe sua senha: ");
+            System.out.print("Informe a senha: ");
             senhas[0] = sc.nextLine();
-            System.out.print("Informe novamente sua senha: ");
+            sc.next();
+            System.out.print("Informe novamente a senha: ");
+            sc.next();
             senhas[1] = sc.nextLine();
         }while (!senhas[0].equals(senhas[1]));
         String senha = Criptografia.criptografe(senhas[0]);
@@ -75,7 +89,13 @@ public class Cadastro {
                 continuar=false;
             }
         }while (continuar);
-        System.out.println("SEJA BEM VINDO: "+ user.getNome().toUpperCase());
+        System.out.println("Salvar? (Y/N)");
+        char opcSalvar = sc.nextLine().toUpperCase().charAt(0);
+        if (opcSalvar == 'Y') {
             UserManager.adicionaNoBanco(user);
+            Login.listarUsuario();
+        } else {
+            Login.listarUsuario();
+        }
     }
 }

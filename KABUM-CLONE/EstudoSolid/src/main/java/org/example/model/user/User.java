@@ -4,7 +4,7 @@ package org.example.model.user;
 public  class User {
 
 
-    private String id;
+    private Long id;
     private String nome;
     private String cpf;
     private String email;
@@ -12,11 +12,33 @@ public  class User {
     private Tipo.Grupo Grupo;
     private Status.StatusDatabase statusDatabase;
 
+    public User() {
+    }
+
     public User(String nome, String cpf, String email, String senha, Tipo.Grupo grupo, Status.StatusDatabase statusDatabase) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.senha = senha;
+        Grupo = grupo;
+        this.statusDatabase = statusDatabase;
+    }
+
+    public User(Long id, String nome, String cpf, String email, String senha, Tipo.Grupo grupo, Status.StatusDatabase statusDatabase) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.senha = senha;
+        Grupo = grupo;
+        this.statusDatabase = statusDatabase;
+    }
+
+    public User(Long id, String nome, String cpf, String email, Tipo.Grupo grupo, Status.StatusDatabase statusDatabase) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
         Grupo = grupo;
         this.statusDatabase = statusDatabase;
     }
@@ -45,11 +67,11 @@ public  class User {
         this.statusDatabase = statusDatabase;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -91,5 +113,9 @@ public  class User {
 
     public void setTipo(Tipo.Grupo Grupo) {
         this.Grupo = Grupo;
+    }
+
+    public Tipo.Grupo getGrupo() {
+        return Grupo;
     }
 }
