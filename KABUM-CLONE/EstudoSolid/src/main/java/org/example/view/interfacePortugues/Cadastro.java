@@ -25,7 +25,6 @@ public class Cadastro {
     protected static void MenuDeCadastro(){
      intermediarioCadastro();
     }
-
     private static void intermediarioCadastro(){
         System.out.println("---------------------------------------------");
         System.out.println(GREENANSI +"Antes de começarmos  \nprecisamos ter certeza que você já não existe no nosso banco de dados ok?");
@@ -37,42 +36,29 @@ public class Cadastro {
             if(VerificaEmail.isEmailValid(email)) continuar = false;
         }while (continuar);
         if (!UserSearch.procuraEmail(email)){
-            cadastro();
+            cadastro(email);
         }
+        Login.LoginMenu();
     }
-    protected static void cadastro(){
+    private static void cadastro(String email){
         User user = null;
         boolean continuar = true;
-        String email;
         System.out.println("----------------------------------------------");
-        System.out.print(PURPLEANSI+"Informe o nome: ");
+        System.out.print(PURPLEANSI+"Informe seu nome: ");
         String nome = sc.nextLine();
         String cpf = "";
         do{
-            System.out.print("Informe o cpf: ");
+            System.out.print("Informe seu cpf: ");
             cpf = sc.nextLine();
             if(ManipulaCPF.verificaCPF(cpf)) continuar = false;
         }while (continuar);
         cpf = ManipulaCPF.retiraPontoDoCPF(cpf);
         continuar = true;
-        do {
-            System.out.println("Informe o email: ");
-            email = sc.next();
-            if(VerificaEmail.isEmailValid(email)) {
-                if (!UserSearch.procuraEmail(email)) {
-                    continuar = false;
-                } else {
-                    System.out.println("Email inválido ou já cadastrado. Tente novamente!");
-                }
-            }
-        } while (continuar);
         String[] senhas = new String[2];
         do{
-            System.out.print("Informe a senha: ");
+            System.out.print("Informe sua senha: ");
             senhas[0] = sc.nextLine();
-            sc.next();
-            System.out.print("Informe novamente a senha: ");
-            sc.next();
+            System.out.print("Informe novamente sua senha: ");
             senhas[1] = sc.nextLine();
         }while (!senhas[0].equals(senhas[1]));
         String senha = Criptografia.criptografe(senhas[0]);
@@ -89,13 +75,8 @@ public class Cadastro {
                 continuar=false;
             }
         }while (continuar);
-        System.out.println("Salvar? (Y/N)");
-        char opcSalvar = sc.nextLine().toUpperCase().charAt(0);
-        if (opcSalvar == 'Y') {
-            UserManager.adicionaNoBanco(user);
-            Login.listarUsuario();
-        } else {
-            Login.listarUsuario();
-        }
+        System.out.println("SEJA BEM VINDO: "+ user.getNome().toUpperCase());
+        UserManager.adicionaNoBanco(user);
+        Login.LoginMenu();
     }
 }

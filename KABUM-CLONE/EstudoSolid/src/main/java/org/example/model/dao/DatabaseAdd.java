@@ -75,4 +75,18 @@ public class DatabaseAdd {
             System.out.println(e.getMessage());
         }
     }
+
+    public static void trocaStatus(String status, Long id) {
+        String sql = "UPDATE users set STATUS = ? where id = ?";
+        try (
+                Connection connection = DatabaseConnect.obterConexao();
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ) {
+            preparedStatement.setString(1, status);
+            preparedStatement.setLong(2, id);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            System.out.println("Erro em atualizar o status: " + e.getMessage());
+        }
+    }
 }

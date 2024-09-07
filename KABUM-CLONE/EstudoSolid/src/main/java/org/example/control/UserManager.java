@@ -1,5 +1,6 @@
 package org.example.control;
 import org.example.model.dao.DatabaseAdd;
+import org.example.model.dao.DatabaseSelect;
 import org.example.model.user.User;
 
 public class UserManager {
@@ -11,6 +12,10 @@ public class UserManager {
 
     }
 
+    public static void alterarUsuario(Long id) {
+        DatabaseAdd.updateUsuario(DatabaseSelect.returnUserPorID(id));
+    }
+
     public static void alterarUsuario(User user) {
         DatabaseAdd.updateUsuario(user);
     }
@@ -20,5 +25,9 @@ public class UserManager {
 
     public static void atualizarSenhaById(Long id, String senha) {
         DatabaseAdd.trocarSenhaById(senha, id);
+    }
+
+    public static void atualizaStatus(String status, Long id){
+        DatabaseAdd.trocaStatus(status,id);
     }
 }
