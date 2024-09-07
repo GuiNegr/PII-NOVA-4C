@@ -25,7 +25,6 @@ public class Cadastro {
     protected static void MenuDeCadastro(){
      intermediarioCadastro();
     }
-
     private static void intermediarioCadastro(){
         System.out.println("---------------------------------------------");
         System.out.println(GREENANSI +"Antes de começarmos  \nprecisamos ter certeza que você já não existe no nosso banco de dados ok?");
@@ -39,6 +38,7 @@ public class Cadastro {
         if (!UserSearch.procuraEmail(email)){
             cadastro(email);
         }
+        Login.LoginMenu();
     }
     private static void cadastro(String email){
         User user = null;
@@ -76,6 +76,7 @@ public class Cadastro {
             }
         }while (continuar);
         System.out.println("SEJA BEM VINDO: "+ user.getNome().toUpperCase());
-            UserManager.adicionaNoBanco(user);
+        UserManager.adicionaNoBanco(user);
+        Login.LoginMenu();
     }
 }

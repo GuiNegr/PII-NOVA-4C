@@ -44,4 +44,49 @@ public class DatabaseAdd {
         }
 
     }
+
+    public static void trocarSenhaById(String senha,Long id) {
+        String sql = "update users set senha = ? where id = ?";
+        try (
+                Connection connection = DatabaseConnect.obterConexao();
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ){
+            preparedStatement.setString(1,senha);
+            preparedStatement.setLong(2,id);
+            preparedStatement.execute();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+    public static void updateUsuario(User user) {
+        String querySQL = "update users set nome = ?, cpf = ?, grupo = ? where id = ?";
+        try (
+                Connection connection = DatabaseConnect.obterConexao();
+                PreparedStatement preparedStatement = connection.prepareStatement(querySQL);
+        ){
+            preparedStatement.setString(1, user.getNome());
+            preparedStatement.setString(2, user.getCpf());
+            preparedStatement.setString(3, user.getGrupo().name());
+            preparedStatement.setLong(4, user.getId());
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void trocaStatus(String status, Long id) {
+        String sql = "UPDATE users set STATUS = ? where id = ?";
+        try (
+                Connection connection = DatabaseConnect.obterConexao();
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ) {
+            preparedStatement.setString(1, status);
+            preparedStatement.setLong(2, id);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            System.out.println("Erro em atualizar o status: " + e.getMessage());
+        }
+    }
 }

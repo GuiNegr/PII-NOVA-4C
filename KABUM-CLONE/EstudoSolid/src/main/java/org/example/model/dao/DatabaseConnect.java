@@ -14,9 +14,9 @@ public class DatabaseConnect {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(URL,LOGIN,PASSWORD);
-            return  connection;
         }catch (Exception e){
-            return connection;
+            System.out.println(e.getMessage());
         }
+        return connection;
     }
 }
