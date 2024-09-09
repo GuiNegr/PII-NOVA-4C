@@ -202,10 +202,17 @@ public class Admin {
     private static void update(){
         User user = null;
         boolean continuar = true;
+        String email = "";
+        do{
+            System.out.print("Informe por favor seu email para localizarmos");
+            email = sc.nextLine();
+            if(VerificaEmail.isEmailValid(email)) continuar = false;
+        }while (continuar);
         System.out.println("----------------------------------------------");
         System.out.print(PURPLEANSI+"Informe seu nome: ");
         String nome = sc.nextLine();
         String cpf = "";
+        continuar= true;
         do{
             System.out.print("Informe seu cpf: ");
             cpf = sc.nextLine();
@@ -226,20 +233,20 @@ public class Admin {
             String tipo = sc.nextLine();
 
             if(tipo.equalsIgnoreCase("Administrador")){
-                user = new User(nome,cpf,"email",senha, ADMINISTRADOR, HABILITADO);
+                user = new User(nome,cpf,email,senha, ADMINISTRADOR, HABILITADO);
                 continuar=false;
             }
             else if(tipo.equalsIgnoreCase("Estoquista")){
-                user = new User(nome,cpf,"email",senha, ESTOQUISTA, HABILITADO);
+                user = new User(nome,cpf,email,senha, ESTOQUISTA, HABILITADO);
                 continuar=false;
             }
         }while (continuar);
         System.out.println("SEJA BEM VINDO: "+ user.getNome().toUpperCase());
-        UserManager.alterarUsuario(user);
+        UserManager.adicionaNoBanco(user);
         if(VerificaEmail.isEmailValid(user.getEmail())){
             System.out.println("email de usuario cadastrado está em conformes");
         }
-        Login.LoginMenu();
+        telaBackofficeAdmin();
     }
 
     private static void trocarStatus(Long id) throws SQLException {
