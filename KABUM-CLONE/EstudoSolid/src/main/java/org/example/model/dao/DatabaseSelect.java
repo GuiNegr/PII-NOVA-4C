@@ -16,7 +16,7 @@ public class DatabaseSelect {
     public static User returnUserPorID(Long id) {
         String query = "select * from users where id = ?";
         Long idUserInBd = null;
-        String cpfInBd = "";
+        String  cpfInBd = "";
         String emailInBd = "";
         String nameInBd = "";
         String status = "";

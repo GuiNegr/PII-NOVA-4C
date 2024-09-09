@@ -5,6 +5,7 @@ import org.example.control.UserSearch;
 import org.example.model.dao.DatabaseSelect;
 import org.example.model.service.Criptografia;
 import org.example.model.service.ManipulaCPF;
+import org.example.model.service.VerificaEmail;
 import org.example.model.user.Tipo;
 import org.example.model.user.User;
 
@@ -27,9 +28,9 @@ public class Admin {
     public static void telaBackofficeAdmin() {
         sc = new Scanner(System.in);
         int op = 0;
-
+        System.out.println(userPrincipal.getNome());
         do {
-            System.out.println(GREENANSI+"--------------------------------------");
+            System.out.println(PURPLEANSI+"--------------------------------------");
             System.out.println("Tela principal Backoffice");
             System.out.println("1 - Listar Produto");
             System.out.println("2 - Listar Usuário");
@@ -103,7 +104,7 @@ public class Admin {
                 update();
             } else {
                 User user = UserSearch.procuraPeloID(Long.parseLong(op));
-                System.out.println("--------------------------------");
+                System.out.println(PURPLEANSI+"--------------------------------");
                 System.out.println("---Opção de edição do usuário---");
                 System.out.println("Id: " + user.getId());
                 System.out.println("Nome: " + user.getNome());
@@ -140,7 +141,7 @@ public class Admin {
     public static void alterarUsuario(User user, User userPrincipal) throws SQLException {
         Scanner sc = new Scanner(System.in);
         if (user.getId().equals(userPrincipal.getId())) {
-            System.out.println("--------Alterar Usuário---------");
+            System.out.println(ORANGEANSI+"--------Alterar Usuário---------");
             System.out.println("Id: " + user.getId());
             System.out.println("Nome: " + user.getNome());
             System.out.println("Cpf: " + user.getCpf());
@@ -166,7 +167,7 @@ public class Admin {
                 listarUsuario();
             }
         } else {
-            System.out.println("--------Alterar Usuário---------");
+            System.out.println(PURPLEANSI+"--------Alterar Usuário---------");
             System.out.println("Id: " + user.getId());
             System.out.println("Nome: " + user.getNome());
             System.out.println("Cpf: " + user.getCpf());
@@ -235,6 +236,9 @@ public class Admin {
         }while (continuar);
         System.out.println("SEJA BEM VINDO: "+ user.getNome().toUpperCase());
         UserManager.alterarUsuario(user);
+        if(VerificaEmail.isEmailValid(user.getEmail())){
+            System.out.println("email de usuario cadastrado está em conformes");
+        }
         Login.LoginMenu();
     }
 
@@ -242,7 +246,7 @@ public class Admin {
         String stats = "";
         User user = UserSearch.procuraPeloID(id);
         System.out.println("--------------------------------");
-        System.out.println("---Opção de edição do usuário---");
+        System.out.println("---Opção de edição de status do usuário---");
         System.out.println("Id: " + user.getId());
         System.out.println("Nome: " + user.getNome());
         System.out.println("Cpf: " + user.getCpf());
@@ -260,8 +264,13 @@ public class Admin {
         char salvar = sc.next().toUpperCase().charAt(0);
         if (salvar == 'Y') {
             UserManager.atualizaStatus(stats, user.getId());
-        }else {
-            telaBackofficeAdmin();
+
         }
+            telaBackofficeAdmin();
+
+    }
+
+    public static void setUserPrincipal(User userPrincipal) {
+        Admin.userPrincipal = userPrincipal;
     }
 }

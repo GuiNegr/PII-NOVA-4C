@@ -14,18 +14,14 @@ public class Estoquista {
 
 
     public static void telaEstoquista() {
-
-
         sc = new Scanner(System.in);
         int op = 0;
-
         do {
             System.out.println(GREENANSI+"--------------------------------------");
             System.out.println("Tela principal Backoffice");
             System.out.println("1 - Listar Produto");
             op = sc.nextInt();
         } while (op <= 0 || op >= 3);
-
       if (op == 1){
           System.out.println("AINDA NÃO DISPONIVEL");
       }
