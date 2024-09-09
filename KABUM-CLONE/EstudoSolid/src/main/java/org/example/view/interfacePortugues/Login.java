@@ -27,18 +27,17 @@ public class Login {
           if( UserSearch.procuraPeloLogin(senha,email)) continuar = false;
        }while (continuar);
 
-
         if(UserSearch.vejaSeEhUmCliente(email)){
             if(UserSearch.procureOGrupo(email).equalsIgnoreCase("Administrador")){
                 userPrincipal = DatabaseSelect.returnUserComplete(email);
+                Admin.setUserPrincipal(userPrincipal);
                 Admin.telaBackofficeAdmin();
+
             }else if(UserSearch.procureOGrupo(email).equalsIgnoreCase("Estoquista")){
                 Estoquista.telaEstoquista();
             }
         }else System.out.println("SEM PERMISSÃO PRA ISSO");
     }
-
-
 }
 
 

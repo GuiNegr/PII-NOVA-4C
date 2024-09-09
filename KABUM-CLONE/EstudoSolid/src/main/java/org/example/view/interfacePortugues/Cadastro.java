@@ -35,10 +35,13 @@ public class Cadastro {
             email = sc.nextLine();
             if(VerificaEmail.isEmailValid(email)) continuar = false;
         }while (continuar);
-        if (!UserSearch.procuraEmail(email)){
+        if (UserSearch.procuraEmail(email)){
+            System.out.println("Email já cadastrado");
+            Login.LoginMenu();
+        }else {
             cadastro(email);
         }
-        Login.LoginMenu();
+
     }
     private static void cadastro(String email){
         User user = null;
