@@ -25,6 +25,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private final PasswordEncoder passwordEncoder;
 
+    @Autowired
     private final GenericMapper mapper;
 
     @Override
@@ -95,9 +96,7 @@ public class UserServiceImpl implements UserService {
         if (user != null && user.getIdUsuario() != id) {
             return "Já existe usuário cadastrado com esse email ou CPF!";
         }
-
         return null;
-
     }
 
 }
