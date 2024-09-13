@@ -25,7 +25,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private final PasswordEncoder passwordEncoder;
 
-    @Autowired
     private final GenericMapper mapper;
 
     @Override
@@ -69,13 +68,13 @@ public class UserServiceImpl implements UserService {
             throw new ConflictException(mensagem);
         }
 
-        LocalDateTime dataBanco = userRepository.getDate();
-        userRequestDTO.setUsuaDhInativo(userRequestDTO.getUsuaDhInativo() != null ? dataBanco : null);
+        userRequestDTO.setUsuaDhInativo(userRequestDTO.getUsuaDhInativo() != null ? userRepository.getDate() : null);
         userRequestDTO.setUsuaDsPassword(userRequestDTO.getUsuaDsPassword() != null ? userRequestDTO.getUsuaDsPassword() : user.getUsuaDsPassword());
         userRequestDTO.setUsuaNmUsuario(userRequestDTO.getUsuaNmUsuario() != null ? userRequestDTO.getUsuaNmUsuario() : user.getUsuaNmUsuario());
         userRequestDTO.setUsuaDsCPF(userRequestDTO.getUsuaDsCPF() != null ? userRequestDTO.getUsuaDsCPF() : user.getUsuaDsCPF());
         userRequestDTO.setUsuaCdGrupo(userRequestDTO.getUsuaCdGrupo() != null ? userRequestDTO.getUsuaCdGrupo() : user.getUsuaCdGrupo());
-
+        userRequestDTO.setUsuaDsEmail(user.getUsuaDsEmail());
+        userRequestDTO.setUsuaDhCadastro(user.getUsuaDhCadastro());
         user = mapper.dtoParaEntidade(userRequestDTO, User.class);
         user.setIdUsuario(id);
 
@@ -96,7 +95,9 @@ public class UserServiceImpl implements UserService {
         if (user != null && user.getIdUsuario() != id) {
             return "Já existe usuário cadastrado com esse email ou CPF!";
         }
+
         return null;
+
     }
 
 }

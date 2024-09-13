@@ -5,15 +5,16 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Builder
 @Table(name = "CDTB_USUARIO_USUA")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@NoArgsConstructor
 public class User {
 
     @Id

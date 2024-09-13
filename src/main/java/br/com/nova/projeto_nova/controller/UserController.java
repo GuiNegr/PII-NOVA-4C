@@ -37,7 +37,7 @@ public class UserController {
         return ResponseEntity.ok(mapper.entidadeParaDTO(userService.getAllOrdened(), UserResponseDTO.class));
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<UserResponseDTO> update(@RequestBody UserRequestDTO userRequestDTO, @PathVariable("id") Long id) {
         UserResponseDTO userResponseDTO = mapper.entidadeParaDTO(userService.update(userRequestDTO, id), UserResponseDTO.class);
         return ResponseEntity.ok().body(userResponseDTO);
