@@ -19,5 +19,4 @@ public class ProdutoRequestDTO {
     private double precoProduto;
     private int qtdEstoqueProduto;
     private Double avalProduto;
-    private ArrayList<ImgProduto> listaImg;
 }

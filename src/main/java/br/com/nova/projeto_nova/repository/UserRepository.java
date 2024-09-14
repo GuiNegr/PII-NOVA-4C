@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+
+
 public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findAllByUsuaDhInativoIsNull();
     Optional<User> findByUsuaDsEmail(String email);

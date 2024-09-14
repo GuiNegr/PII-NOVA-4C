@@ -13,8 +13,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class ImgProdutoResponseDTO {
-    private long idFkProd;
-    private String nomeImgProd;
+    private long idImgProd;
+    private long FkIdproduto;
     private String caminhoImg;
     private boolean imgPrincipal;
 }

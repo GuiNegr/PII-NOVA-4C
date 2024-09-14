@@ -1,7 +1,7 @@
 package br.com.nova.projeto_nova.bean.dto;
 
+import br.com.nova.projeto_nova.bean.entity.Produto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,10 +12,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class imgProdutoRequestDTO {
-    private long idImgProd;
-    private long idFkProd;
-    private String nomeImgProd;
+public class ImgProdutoRequestDTO {
+    private Long FkIdproduto;
     private String caminhoImg;
     private boolean imgPrincipal;
 }

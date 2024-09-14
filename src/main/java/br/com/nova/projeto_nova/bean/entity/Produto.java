@@ -32,7 +32,4 @@ public class Produto {
     @Column(name="AVAL_PROD_PRODUTO",nullable = false)
     private Double avalProduto;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="ID_PROD_CD_PRODUTO")
-    private ArrayList<ImgProduto> listaImg;
 }
