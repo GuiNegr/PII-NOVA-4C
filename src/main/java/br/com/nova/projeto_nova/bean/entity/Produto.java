@@ -34,4 +34,5 @@ public class Produto {
     @Column(name="PROD_NR_AVAL",nullable = false)
     private Double avalProduto;
 
+
 }
