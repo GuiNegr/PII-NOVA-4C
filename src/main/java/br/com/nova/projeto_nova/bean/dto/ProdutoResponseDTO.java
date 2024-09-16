@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @Data
@@ -17,9 +19,9 @@ import java.util.ArrayList;
 public class ProdutoResponseDTO {
     private String nomeProduto;
     private String descDetalhadaProduto;
-    private double precoProduto;
+    private BigDecimal precoProduto;
     private int qtdEstoqueProduto;
     private Double avalProduto;
-    private ArrayList<ImgProduto> listaImg;
-
+    private LocalDateTime prodDhCadastro;
+    private LocalDateTime prodDhInativo;
 }
