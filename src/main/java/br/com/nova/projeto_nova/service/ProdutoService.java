@@ -8,5 +8,6 @@ import java.util.Optional;
 public interface ProdutoService {
     public Produto getIdProduto(Long id);
     public Produto createProduto(ProdutoRequestDTO produtoRequestDTO);
+    public Produto alterarStatus(Long id);
 
 }
