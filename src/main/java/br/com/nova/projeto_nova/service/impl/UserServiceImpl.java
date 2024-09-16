@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User login(UserRequestDTO userRequestDTO) {
         User user = null;
-        user = getByEmail(userRequestDTO.getUsuaDsEmail());
+        user = userRepository.findByUsuaDsEmail(userRequestDTO.getUsuaDsEmail()).orElseThrow(() -> new NotFoundException("Não foi possível encontrar o usuário pelo email " + userRequestDTO.getUsuaDsEmail()));
         if (passwordEncoder.matches(userRequestDTO.getUsuaDsPassword(), user.getUsuaDsPassword())) {
             return user;
         }
@@ -66,6 +66,10 @@ public class UserServiceImpl implements UserService {
 
         String senhaEncryptada = passwordEncoder.encode(userRequestDTO.getUsuaDsPassword());
         userRequestDTO.setUsuaDsPassword(senhaEncryptada);
+
+        if (userRequestDTO.getUsuaCdGrupo() == null) {
+            userRequestDTO.setUsuaCdGrupo("Usuário");
+        }
 
         return userRepository.save(mapper.dtoParaEntidade(userRequestDTO, User.class));
     }
@@ -92,7 +96,6 @@ public class UserServiceImpl implements UserService {
 
 
     }
-
 
 
     public String validaDuplicidadeUsuario(UserRequestDTO userRequestDTO) {
