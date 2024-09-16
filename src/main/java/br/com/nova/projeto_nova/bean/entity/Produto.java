@@ -36,8 +36,9 @@ public class Produto {
     @Column(name="PROD_NR_AVAL",nullable = false)
     private Double avalProduto;
 
+
     @CreationTimestamp
-    @Column(name = "PROD_DH_CADASTRO",nullable = false)
+    @Column(name = "PROD_DH_CADASTRO", nullable = false)
     private LocalDateTime prodDhCadastro;
 
     @Column(name = "PROD_DH_INATIVO")

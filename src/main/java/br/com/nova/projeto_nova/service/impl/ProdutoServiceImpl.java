@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 
@@ -32,5 +33,16 @@ public class ProdutoServiceImpl implements ProdutoService {
     @Override
     public Produto createProduto(ProdutoRequestDTO produtoRequestDTO) {
         return this.produtoRepository.save(mapper.dtoParaEntidade(produtoRequestDTO, Produto.class));
+    }
+
+    @Override
+    public Produto alterarStatus(Long id) {
+        ProdutoRequestDTO produtoRequestDTO = mapper.entidadeParaDTO(this.produtoRepository.getReferenceById(id), ProdutoRequestDTO.class);
+        if(produtoRequestDTO.getProdDhInativo() != null){
+            produtoRequestDTO.setProdDhInativo(null);
+            return this.produtoRepository.save(mapper.dtoParaEntidade(produtoRequestDTO, Produto.class));
+        }
+        produtoRequestDTO.setProdDhInativo(LocalDateTime.now());
+        return this.produtoRepository.save(mapper.dtoParaEntidade(produtoRequestDTO,Produto.class));
     }
 }
