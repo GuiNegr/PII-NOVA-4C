@@ -48,6 +48,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User login(UserRequestDTO userRequestDTO) {
+        User user = null;
+        user = getByEmail(userRequestDTO.getUsuaDsEmail());
+        if (passwordEncoder.matches(userRequestDTO.getUsuaDsPassword(), user.getUsuaDsPassword())) {
+            return user;
+        }
+        return user;
+    }
+
+    @Override
     public User create(UserRequestDTO userRequestDTO) throws ConflictException {
         String mensagem = validaDuplicidadeUsuario(userRequestDTO);
         if (mensagem != null) {
@@ -82,6 +92,8 @@ public class UserServiceImpl implements UserService {
 
 
     }
+
+
 
     public String validaDuplicidadeUsuario(UserRequestDTO userRequestDTO) {
         if (userRepository.findByUsuaDsEmail(userRequestDTO.getUsuaDsEmail()).isPresent()) {

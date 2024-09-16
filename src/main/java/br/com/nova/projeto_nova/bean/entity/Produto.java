@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 @Data
@@ -17,19 +19,19 @@ public class Produto {
     @Column(name = "ID_PROD_CD_PRODUTO")
     private Long idProduto;
 
-    @Column(name = "NOME_PROD_NM_PRODUTO",nullable = false)
+    @Column(name = "PROD_NM_PRODUTO",nullable = false, length = 200)
     private String nomeProduto;
 
-    @Column(name = "DESC_PROD_NM_PRODUTO", nullable = false)
+    @Column(name = "PROD_TX_DESC", nullable = false, length = 2000)
     private String descDetalhadaProduto;
 
-    @Column(name = "PRECO_PROD_PRODUTO", nullable = false)
-    private double precoProduto;
+    @Column(name = "PROD_NR_PRECO", nullable = false)
+    private BigDecimal precoProduto;
 
-    @Column(name="QTD_PROD_PRODUTO", nullable = false)
+    @Column(name="PROD_NR_QUANTIDADE", nullable = false)
     private int qtdEstoqueProduto;
 
-    @Column(name="AVAL_PROD_PRODUTO",nullable = false)
+    @Column(name="PROD_NR_AVAL",nullable = false)
     private Double avalProduto;
 
 }
