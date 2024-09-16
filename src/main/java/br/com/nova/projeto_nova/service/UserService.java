@@ -12,6 +12,7 @@ public interface UserService {
     User getByEmail(String usuarioEmail) throws NotFoundException;
     List<User> getAll();
     List<User> getAllOrdened();
+    User login(UserRequestDTO userRequestDTO);
     User create(UserRequestDTO userRequestDTO) throws ConflictException;
     User update(UserRequestDTO userRequestDTO, Long id) throws NotFoundException, ConflictException;
 }
