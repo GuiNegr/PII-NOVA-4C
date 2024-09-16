@@ -37,16 +37,22 @@ public class UserController {
         return ResponseEntity.ok(mapper.entidadeParaDTO(userService.getAllOrdened(), UserResponseDTO.class));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<UserResponseDTO> update(@RequestBody UserRequestDTO userRequestDTO, @PathVariable("id") Long id) {
-        UserResponseDTO userResponseDTO = mapper.entidadeParaDTO(userService.update(userRequestDTO, id), UserResponseDTO.class);
-        return ResponseEntity.ok().body(userResponseDTO);
-    }
-
     @GetMapping("/login")
     public ResponseEntity<String> login(@RequestBody UserRequestDTO userRequestDTO) {
         UserResponseDTO userResponseDTO = mapper.entidadeParaDTO(userService.login(userRequestDTO), UserResponseDTO.class);
         return ResponseEntity.ok().body(userResponseDTO.getUsuaCdGrupo());
+    }
+
+    @PutMapping("/inabilitar/{id}")
+    public ResponseEntity<UserResponseDTO> inabilitar(@PathVariable("id") Long id) {
+        UserResponseDTO userResponseDTO = mapper.entidadeParaDTO(userService.updateInativo(id), UserResponseDTO.class);
+        return ResponseEntity.ok().body(userResponseDTO);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<UserResponseDTO> update(@RequestBody UserRequestDTO userRequestDTO, @PathVariable("id") Long id) {
+        UserResponseDTO userResponseDTO = mapper.entidadeParaDTO(userService.update(userRequestDTO, id), UserResponseDTO.class);
+        return ResponseEntity.ok().body(userResponseDTO);
     }
 
     @PostMapping

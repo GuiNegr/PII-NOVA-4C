@@ -15,4 +15,5 @@ public interface UserService {
     User login(UserRequestDTO userRequestDTO);
     User create(UserRequestDTO userRequestDTO) throws ConflictException;
     User update(UserRequestDTO userRequestDTO, Long id) throws NotFoundException, ConflictException;
+    User updateInativo(Long id);
 }
