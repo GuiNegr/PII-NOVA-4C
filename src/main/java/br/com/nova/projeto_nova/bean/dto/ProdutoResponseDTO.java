@@ -24,5 +24,4 @@ public class ProdutoResponseDTO {
     private Double avalProduto;
     private LocalDateTime prodDhCadastro;
     private LocalDateTime prodDhInativo;
-
 }
