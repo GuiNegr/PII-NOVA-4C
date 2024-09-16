@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @Data
@@ -34,5 +36,11 @@ public class Produto {
     @Column(name="PROD_NR_AVAL",nullable = false)
     private Double avalProduto;
 
+    @CreationTimestamp
+    @Column(name = "PROD_DH_CADASTRO",nullable = false)
+    private LocalDateTime prodDhCadastro;
+
+    @Column(name = "PROD_DH_INATIVO")
+    private LocalDateTime prodDhInativo;
 
 }
