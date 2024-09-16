@@ -82,7 +82,6 @@ public class UserServiceImpl implements UserService {
             throw new ConflictException(mensagem);
         }
 
-        userRequestDTO.setUsuaDhInativo(userRequestDTO.getUsuaDhInativo() != null ? userRepository.getDate() : null);
         userRequestDTO.setUsuaDsPassword(userRequestDTO.getUsuaDsPassword() != null ? userRequestDTO.getUsuaDsPassword() : user.getUsuaDsPassword());
         userRequestDTO.setUsuaNmUsuario(userRequestDTO.getUsuaNmUsuario() != null ? userRequestDTO.getUsuaNmUsuario() : user.getUsuaNmUsuario());
         userRequestDTO.setUsuaDsCPF(userRequestDTO.getUsuaDsCPF() != null ? userRequestDTO.getUsuaDsCPF() : user.getUsuaDsCPF());
@@ -97,6 +96,12 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    public User updateInativo(Long id) {
+        User user = getById(id);
+        if (user.getUsuaDhInativo() == null) user.setUsuaDhInativo(userRepository.getDate());
+        else user.setUsuaDhInativo(null);
+        return userRepository.save(user);
+    }
 
     public String validaDuplicidadeUsuario(UserRequestDTO userRequestDTO) {
         if (userRepository.findByUsuaDsEmail(userRequestDTO.getUsuaDsEmail()).isPresent()) {
