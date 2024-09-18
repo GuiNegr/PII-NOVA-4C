@@ -25,6 +25,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private final PasswordEncoder passwordEncoder;
 
+
+    private final Validadores validadores;
+
     private final GenericMapper mapper;
 
     @Override
@@ -62,6 +65,14 @@ public class UserServiceImpl implements UserService {
         String mensagem = validaDuplicidadeUsuario(userRequestDTO);
         if (mensagem != null) {
             throw new ConflictException(mensagem);
+        }
+
+        if(!validadores.validaCpf(userRequestDTO.getUsuaDsCPF())){
+            throw new IllegalArgumentException("CPF INVALIDO");
+        }
+
+        if(!validadores.validaEmail(userRequestDTO.getUsuaDsEmail())){
+            throw new IllegalArgumentException("EMAIL INVALIDO");
         }
 
         String senhaEncryptada = passwordEncoder.encode(userRequestDTO.getUsuaDsPassword());
