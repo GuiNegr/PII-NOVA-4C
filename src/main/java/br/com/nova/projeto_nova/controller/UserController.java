@@ -37,7 +37,7 @@ public class UserController {
         return ResponseEntity.ok(mapper.entidadeParaDTO(userService.getAllOrdened(), UserResponseDTO.class));
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody UserRequestDTO userRequestDTO) {
         UserResponseDTO userResponseDTO = mapper.entidadeParaDTO(userService.login(userRequestDTO), UserResponseDTO.class);
         return ResponseEntity.ok().body(userResponseDTO.getUsuaCdGrupo());
