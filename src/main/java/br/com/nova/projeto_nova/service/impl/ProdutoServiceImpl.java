@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -44,5 +45,10 @@ public class ProdutoServiceImpl implements ProdutoService {
         }
         produtoRequestDTO.setProdDhInativo(LocalDateTime.now());
         return this.produtoRepository.save(mapper.dtoParaEntidade(produtoRequestDTO,Produto.class));
+    }
+
+    @Override
+    public List<Produto> listarProdutos() {
+        return produtoRepository.findAllByOrderByIdProdutoDesc();
     }
 }
