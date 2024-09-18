@@ -17,6 +17,7 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class ProdutoResponseDTO {
+    private Long idProduto;
     private String nomeProduto;
     private String descDetalhadaProduto;
     private BigDecimal precoProduto;
