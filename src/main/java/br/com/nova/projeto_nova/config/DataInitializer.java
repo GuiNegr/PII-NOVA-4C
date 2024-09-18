@@ -24,9 +24,9 @@ public class DataInitializer implements CommandLineRunner {
     public void run(String... args) throws Exception {
         User adm = new User();
         adm.setUsuaNmUsuario("ADM");
-        adm.setUsuaDsEmail("adm@adm.com");
+        adm.setUsuaDsEmail("adm@gmail.com");
         adm.setUsuaDsPassword("adm123");
-        adm.setUsuaDsCPF("29323823066");
+        adm.setUsuaDsCPF("720.455.910-00");
         adm.setUsuaCdGrupo("Administrador");
 
         UserRequestDTO userRequestDTO = mapper.entidadeParaDTO(adm, UserRequestDTO.class);
