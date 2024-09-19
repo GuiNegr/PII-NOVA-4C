@@ -34,7 +34,6 @@ public class ProdutoController {
         ProdutoResponseDTO produtoResponseDTO = mapper.entidadeParaDTO(produtoService.alterarStatus(id), ProdutoResponseDTO.class);
         return ResponseEntity.ok(produtoResponseDTO);
     }
-
     @PutMapping("/{id}/{qtd}/alteraQuantidade")
     public ResponseEntity<ProdutoResponseDTO> alterarQuantidade(@PathVariable Long id,@PathVariable int qtd){
         ProdutoResponseDTO produtoResponseDTO = mapper.entidadeParaDTO(produtoService.trocaQtd(id,qtd), ProdutoResponseDTO.class);
