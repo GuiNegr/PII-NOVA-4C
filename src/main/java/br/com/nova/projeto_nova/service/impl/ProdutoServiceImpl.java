@@ -1,15 +1,13 @@
 package br.com.nova.projeto_nova.service.impl;
-
 import br.com.nova.projeto_nova.bean.dto.ProdutoRequestDTO;
+import br.com.nova.projeto_nova.bean.dto.ProdutoResponseDTO;
 import br.com.nova.projeto_nova.bean.entity.Produto;
 import br.com.nova.projeto_nova.mapper.GenericMapper;
 import br.com.nova.projeto_nova.repository.ProdutoRepository;
 import br.com.nova.projeto_nova.service.ProdutoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -33,6 +31,9 @@ public class ProdutoServiceImpl implements ProdutoService {
 
     @Override
     public Produto createProduto(ProdutoRequestDTO produtoRequestDTO) {
+        if(validaDuplicidadeProduto(produtoRequestDTO.getNomeProduto()) != null){
+            return null;
+        }
         return this.produtoRepository.save(mapper.dtoParaEntidade(produtoRequestDTO, Produto.class));
     }
 
@@ -50,5 +51,20 @@ public class ProdutoServiceImpl implements ProdutoService {
     @Override
     public List<Produto> listarProdutos() {
         return produtoRepository.findAllByOrderByIdProdutoDesc();
+    public String validaDuplicidadeProduto(String nomeProduto) {
+       Produto produto = this.produtoRepository.findBynomeProduto(nomeProduto).orElseThrow();
+        if (produto != null) {
+            return "Já existe este produto no banco!";
+        }
+        return null;
+    }
+
+    public Produto trocaQtd(Long id, int qtd){
+        Produto produto = this.produtoRepository.findById(id).orElseThrow();
+        if(produto != null){
+            produto.setQtdEstoqueProduto(qtd);
+            this.produtoRepository.save(produto);
+        }
+        return produto;
     }
 }

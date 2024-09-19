@@ -6,8 +6,15 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+import java.util.Optional;
+
+
 
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
+
     List<Produto> findAllByOrderByIdProdutoDesc();
+
+    Optional<Produto> findBynomeProduto(String nomeProd);
+
 }
