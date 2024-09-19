@@ -48,7 +48,6 @@ public class ProdutoServiceImpl implements ProdutoService {
         return this.produtoRepository.save(mapper.dtoParaEntidade(produtoRequestDTO,Produto.class));
     }
 
-<<<<<<< HEAD
     public String validaDuplicidadeProduto(String nomeProduto) {
        Produto produto = this.produtoRepository.findBynomeProduto(nomeProduto).orElseThrow();
         if (produto != null) {
@@ -64,10 +63,9 @@ public class ProdutoServiceImpl implements ProdutoService {
             this.produtoRepository.save(produto);
         }
         return produto;
-=======
+
     @Override
     public List<Produto> listarProdutos() {
         return produtoRepository.findAllByOrderByIdProdutoDesc();
->>>>>>> b337eca (Listagem de produtos)
     }
 }
