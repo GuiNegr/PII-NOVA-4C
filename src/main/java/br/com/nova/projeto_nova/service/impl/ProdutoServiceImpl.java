@@ -51,8 +51,8 @@ public class ProdutoServiceImpl implements ProdutoService {
 
 
     public String validaDuplicidadeProduto(String nomeProduto) {
-       Produto produto = this.produtoRepository.findBynomeProduto(nomeProduto).orElseThrow();
-        if (produto != null) {
+
+        if (this.produtoRepository.findBynomeProduto(nomeProduto).isPresent()) {
             return "Já existe este produto no banco!";
         }
         return null;
