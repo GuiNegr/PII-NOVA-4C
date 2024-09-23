@@ -4,6 +4,9 @@ package br.com.nova.projeto_nova.bean.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.sql.Blob;
 
 @Data
 @Entity
@@ -16,10 +19,14 @@ public class ImgProduto {
 
     @ManyToOne
     @JoinColumn(name = "FK_PROD_CD_PROD")
-    private Produto FkIdproduto;
+    private Produto fkIdproduto;
 
-    @Column(name="CAMINHO_IMG_NM_PROD",nullable = false)
-    private String caminhoImg;
+    @Column(name="NOMEARQUIVO_IMG_NM_PROD", nullable = false, length = 60000)
+    private String nomeArquivos;
+
+    @Lob
+    @Column(name="BYTES_IMG_NM_PROD", nullable = false, length = 60000)
+    private byte[] imgBlob;
 
     @Column(name="PRINCIPAL_IMG_NM_PROD",nullable = false)
     private boolean imgPrincipal;

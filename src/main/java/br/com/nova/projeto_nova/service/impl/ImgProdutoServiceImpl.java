@@ -11,9 +11,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
-public class ImgProdutoServiceImpl implements ImgProdutoService{
+public  class ImgProdutoServiceImpl implements ImgProdutoService{
 
     @Autowired
     private ImgProdutoRepository imgProdutoRepository;
@@ -27,5 +29,11 @@ public class ImgProdutoServiceImpl implements ImgProdutoService{
     @Override
     public ImgProduto create(ImgProdutoRequestDTO imgProdutoRequestDTO) {
             return this.imgProdutoRepository.save(mapper.dtoParaEntidade(imgProdutoRequestDTO,ImgProduto.class));
+    }
+
+    @Override
+    public List<ImgProduto> vizualizarImgs(Long id) {
+        Produto produto = produtoRepository.findById(id).orElseThrow();
+        return imgProdutoRepository.findByFkIdproduto(produto);
     }
 }
