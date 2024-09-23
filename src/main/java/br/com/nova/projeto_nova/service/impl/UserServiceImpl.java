@@ -54,8 +54,8 @@ public class UserServiceImpl implements UserService {
     public User login(UserRequestDTO userRequestDTO) {
         User user = null;
         user = userRepository.findByUsuaDsEmail(userRequestDTO.getUsuaDsEmail()).orElseThrow(() -> new NotFoundException("Não foi possível encontrar o usuário pelo email " + userRequestDTO.getUsuaDsEmail()));
-        if (passwordEncoder.matches(userRequestDTO.getUsuaDsPassword(), user.getUsuaDsPassword())) {
-            return user;
+        if (!passwordEncoder.matches(userRequestDTO.getUsuaDsPassword(), user.getUsuaDsPassword())) {
+            throw new IllegalArgumentException("Email ou senha incorreto!");
         }
         return user;
     }
