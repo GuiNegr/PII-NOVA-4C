@@ -12,22 +12,22 @@ import java.sql.Blob;
 @Entity
 @Table(name = "CDTB_IMGPROD_IMG")
 public class ImgProduto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="ID_IMG_CD_PROD")
-    private long idImgProd;
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name="ID_IMG_CD_PROD")
+        private long idImgProd;
 
-    @ManyToOne
-    @JoinColumn(name = "FK_PROD_CD_PROD")
-    private Produto fkIdproduto;
+        @ManyToOne
+        @JoinColumn(name = "FK_PROD_CD_PROD")
+        private Produto fkIdproduto;
 
-    @Column(name="NOMEARQUIVO_IMG_NM_PROD", nullable = false, length = 60000)
-    private String nomeArquivos;
+        @Column(name="NOMEARQUIVO_IMG_NM_PROD", nullable = false, length = 60000)
+        private String nomeArquivos;
 
-    @Lob
-    @Column(name="BYTES_IMG_NM_PROD", nullable = false, length = 60000)
-    private byte[] imgBlob;
+        @Lob
+        @Column(name="BYTES_IMG_NM_PROD", nullable = false, length = 60000)
+        private String imgBlob;
 
-    @Column(name="PRINCIPAL_IMG_NM_PROD",nullable = false)
-    private boolean imgPrincipal;
+        @Column(name="PRINCIPAL_IMG_NM_PROD",nullable = false)
+        private boolean imgPrincipal;
 }

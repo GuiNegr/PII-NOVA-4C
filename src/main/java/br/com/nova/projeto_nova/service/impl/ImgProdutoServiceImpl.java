@@ -1,6 +1,7 @@
 package br.com.nova.projeto_nova.service.impl;
 
 import br.com.nova.projeto_nova.bean.dto.ImgProdutoRequestDTO;
+import br.com.nova.projeto_nova.bean.dto.ImgProdutoResponseDTO;
 import br.com.nova.projeto_nova.bean.entity.ImgProduto;
 import br.com.nova.projeto_nova.bean.entity.Produto;
 import br.com.nova.projeto_nova.mapper.GenericMapperImpl;
@@ -35,5 +36,10 @@ public  class ImgProdutoServiceImpl implements ImgProdutoService{
     public List<ImgProduto> vizualizarImgs(Long id) {
         Produto produto = produtoRepository.findById(id).orElseThrow();
         return imgProdutoRepository.findByFkIdproduto(produto);
+    }
+
+    @Override
+    public ImgProduto apenasUmaImg(Long id) {
+        return imgProdutoRepository.findById(id).orElseThrow();
     }
 }
