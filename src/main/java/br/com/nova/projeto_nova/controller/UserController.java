@@ -43,6 +43,9 @@ public class UserController {
         return ResponseEntity.ok().body(userResponseDTO.getUsuaCdGrupo());
     }
 
+
+
+
     @PutMapping("/inabilitar/{id}")
     public ResponseEntity<UserResponseDTO> inabilitar(@PathVariable("id") Long id) {
         UserResponseDTO userResponseDTO = mapper.entidadeParaDTO(userService.updateInativo(id), UserResponseDTO.class);

@@ -44,24 +44,7 @@ public class ImgProdutoController {
             @RequestParam("imgBlob") List<MultipartFile> imgs,
             @RequestParam("imgPrincipal") List<Boolean> imgPrincipals,
             @RequestParam("id") List<Long> ids){
-        List<ImgProdutoResponseDTO> responseList = new ArrayList<>();
-        for (int i = 0; i < imgs.size(); i++) {
-            Long id = ids.get(i);
-            ImgProduto imgS = new ImgProduto();
-
-            imgS.setFkIdproduto(produtoService.getIdProduto(id));
-            try {
-                byte[] imgBytes = imgs.get(i).getBytes();
-                String imgBase64 = Base64.getEncoder().encodeToString(imgBytes);
-                imgS.setImgBlob(imgBase64);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            imgS.setNomeArquivos(imgs.get(i).getOriginalFilename());
-            imgS.setImgPrincipal(imgPrincipals.get(i));
-            imgProdutoService.create(mapper.entidadeParaDTO(imgS,ImgProdutoRequestDTO.class));
-            responseList.add(mapper.entidadeParaDTO(imgS,ImgProdutoResponseDTO.class));
-        }
+        List<ImgProdutoResponseDTO> responseList = this.imgProdutoService.adicionaImgNobanco(imgs,imgPrincipals,ids);
         return ResponseEntity.status(HttpStatus.CREATED).body(responseList);
     }
 
