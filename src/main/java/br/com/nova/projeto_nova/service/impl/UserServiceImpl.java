@@ -68,11 +68,11 @@ public class UserServiceImpl implements UserService {
         }
 
         if(!validadores.validaCpf(userRequestDTO.getUsuaDsCPF())){
-            throw new IllegalArgumentException("CPF INVALIDO");
+            throw new ConflictException("CPF INVALIDO");
         }
 
         if(!validadores.validaEmail(userRequestDTO.getUsuaDsEmail())){
-            throw new IllegalArgumentException("EMAIL INVALIDO");
+            throw new ConflictException("EMAIL INVALIDO");
         }
 
         String senhaEncryptada = passwordEncoder.encode(userRequestDTO.getUsuaDsPassword());

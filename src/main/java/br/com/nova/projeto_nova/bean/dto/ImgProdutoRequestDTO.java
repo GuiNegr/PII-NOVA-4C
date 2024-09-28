@@ -17,7 +17,7 @@ import java.sql.Blob;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class ImgProdutoRequestDTO {
     private Long fkIdproduto;
-    private byte[] imgBlob;
+    private String imgBlob;
     private String nomeArquivos;
     private boolean imgPrincipal;
 }
