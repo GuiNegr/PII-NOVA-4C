@@ -35,6 +35,14 @@ public class ProdutoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(produtoResponseDTO);
     }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<ProdutoResponseDTO>update(@RequestBody ProdutoRequestDTO produtoRequestDTO,@PathVariable("id") Long id
+    ){
+        ProdutoResponseDTO produtoResponseDTO = mapper.entidadeParaDTO(produtoService.updateProduto(id,produtoRequestDTO), ProdutoResponseDTO.class);
+        return ResponseEntity.status(HttpStatus.CREATED).body(produtoResponseDTO);
+    }
+
+
 
     @GetMapping("/{id}/acharProduto")
     public ResponseEntity<ProdutoResponseDTO>acharId(@PathVariable Long id){

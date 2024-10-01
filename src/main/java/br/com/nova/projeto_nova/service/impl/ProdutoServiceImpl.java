@@ -37,6 +37,17 @@ public class ProdutoServiceImpl implements ProdutoService {
         return this.produtoRepository.save(mapper.dtoParaEntidade(produtoRequestDTO, Produto.class));
     }
 
+
+    public Produto updateProduto(Long id, ProdutoRequestDTO produtoRequestDTO) {
+        Produto produto = this.produtoRepository.findById(id).orElseThrow();
+        produto.setNomeProduto(produtoRequestDTO.getNomeProduto());
+        produto.setAvalProduto(produtoRequestDTO.getAvalProduto());
+        produto.setPrecoProduto(produtoRequestDTO.getPrecoProduto());
+        produto.setDescDetalhadaProduto(produtoRequestDTO.getDescDetalhadaProduto());
+        produto.setIdProduto(id);
+        return this.produtoRepository.save(produto);
+    }
+
     @Override
     public Produto alterarStatus(Long id) {
         ProdutoResponseDTO produtoResponseDTO = mapper.entidadeParaDTO(this.produtoRepository.findById(id).get(), ProdutoResponseDTO.class);

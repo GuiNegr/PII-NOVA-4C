@@ -48,6 +48,15 @@ public class ImgProdutoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(responseList);
     }
 
+    @PutMapping(value="/update/{idProduto}",consumes = { "multipart/form-data" })
+    public ResponseEntity<List<ImgProdutoResponseDTO>>Update(
+            @RequestParam("imgBlob") List<MultipartFile> imgs,
+            @RequestParam("imgPrincipal") List<Boolean> imgPrincipals,
+            @RequestParam("id") List<Long> ids,@PathVariable Long idProduto){
+        List<ImgProdutoResponseDTO> responseList = this.imgProdutoService.updateDimg(imgs,imgPrincipals,ids,idProduto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseList);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<List<ImgProdutoResponseDTO>>localizar(@PathVariable Long id){
         List<ImgProdutoResponseDTO> responseList = new ArrayList<>();
