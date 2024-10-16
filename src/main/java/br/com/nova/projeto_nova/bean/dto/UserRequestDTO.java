@@ -1,6 +1,7 @@
 package br.com.nova.projeto_nova.bean.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,4 +22,6 @@ public class UserRequestDTO {
     private String usuaCdGrupo;
     private LocalDateTime usuaDhCadastro;
     private LocalDateTime usuaDhInativo;
+    private String usuaGenero;
+    private String usuaDataNascimento;
 }

@@ -43,4 +43,11 @@ public class User {
 
     @Column(name = "USUA_DH_INATIVO")
     private LocalDateTime usuaDhInativo;
+
+    @Column(name = "USUA_CD_GENERO")
+    private String usuaGenero;
+
+    @Column(name = "USUA_CD_NASCIMENTO")
+    private String usuaDataNascimento;
+    
 }
