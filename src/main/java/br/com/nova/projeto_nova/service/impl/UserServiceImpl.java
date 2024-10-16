@@ -68,7 +68,9 @@ public class UserServiceImpl implements UserService {
         }
 
         if(!validadores.validaCpf(userRequestDTO.getUsuaDsCPF())){
-            throw new ConflictException("CPF INVALIDO");
+            if(userRepository.existsByUsuaDsCPF(userRequestDTO.getUsuaDsCPF())){
+                throw new ConflictException("CPF INVALIDO OU JÁ PRESENTE NA NOSSA BASE");
+            }
         }
 
         if(!validadores.validaEmail(userRequestDTO.getUsuaDsEmail())){

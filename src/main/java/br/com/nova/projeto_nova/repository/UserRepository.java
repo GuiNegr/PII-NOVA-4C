@@ -15,6 +15,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByUsuaDsEmail(String email);
     Optional<User> findByUsuaDsEmailAndUsuaDsPassword(String email, String senha);
     List<User> findAllByOrderByUsuaNmUsuarioAsc();
+    Boolean existsByUsuaDsCPF(String cpf);
     Optional<User> findByUsuaDsCPF(String cpf);
     Optional<User> findByUsuaDsCPFOrUsuaDsEmail(String cpf, String email);
     @Query(value="SELECT CURRENT_TIMESTAMP() AS DATA", nativeQuery = true)
