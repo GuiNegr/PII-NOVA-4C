@@ -94,8 +94,11 @@ public class UserServiceImpl implements UserService {
         if (mensagem != null) {
             throw new ConflictException(mensagem);
         }
-
-        userRequestDTO.setUsuaDsPassword(userRequestDTO.getUsuaDsPassword() != null ? userRequestDTO.getUsuaDsPassword() : user.getUsuaDsPassword());
+        if(!passwordEncoder.matches(user.getUsuaDsPassword(), userRequestDTO.getUsuaDsPassword()) && userRequestDTO.getUsuaDsPassword() != null){
+            userRequestDTO.setUsuaDsPassword(passwordEncoder.encode(userRequestDTO.getUsuaDsPassword()));
+        }else {
+            userRequestDTO.setUsuaDsPassword(user.getUsuaDsPassword());
+        }
         userRequestDTO.setUsuaNmUsuario(userRequestDTO.getUsuaNmUsuario() != null ? userRequestDTO.getUsuaNmUsuario() : user.getUsuaNmUsuario());
         userRequestDTO.setUsuaDsCPF(userRequestDTO.getUsuaDsCPF() != null ? userRequestDTO.getUsuaDsCPF() : user.getUsuaDsCPF());
         userRequestDTO.setUsuaCdGrupo(userRequestDTO.getUsuaCdGrupo() != null ? userRequestDTO.getUsuaCdGrupo() : user.getUsuaCdGrupo());
