@@ -2,8 +2,12 @@ package br.com.nova.projeto_nova.bean.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
+@Getter
+@Setter
 @Entity
 @Table(name="CDTB_ENDERECO")
 public class Endereco {
@@ -37,6 +41,9 @@ public class Endereco {
     @Column(name = "ENDERECO_PRINCIPAL_NM_ENDERECO")
     private boolean enderecoPrincipal;
 
+
+    @Column(name = "GRUPO_ENDERECO_NM_ENDERECI")
+    private String grupo;
     @ManyToOne
     @JoinColumn
     private User fkUser;

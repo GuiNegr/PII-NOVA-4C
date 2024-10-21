@@ -9,6 +9,6 @@ import java.util.List;
 public interface EnderecoService {
 
     List<EnderecoResponseDTO> cadastroEndereco(List<Endereco> endereco, User user);
-    Endereco atualizaCadEndereco(Endereco endereco,Long idUser);
+    Endereco atualizaCadEndereco(Endereco endereco);
     List<EnderecoResponseDTO>listarEndereco(User user);
 }

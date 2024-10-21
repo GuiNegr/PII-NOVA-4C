@@ -1,7 +1,9 @@
 package br.com.nova.projeto_nova.bean.dto;
 
 import br.com.nova.projeto_nova.bean.entity.User;
+import lombok.Data;
 
+@Data
 public class EnderecoResponseDTO {
     private Long id;
     private String logradouro;
@@ -12,5 +14,6 @@ public class EnderecoResponseDTO {
     private String cep;
     private String uf;
     private boolean enderecoPrincipal;
+    private String grupo;
     private User fkUser;
 }

@@ -39,10 +39,16 @@ public class EnderecoServiceImpl implements EnderecoService {
     }
 
     @Override
-    public Endereco atualizaCadEndereco(Endereco endereco, Long idUser) {
-        User user = userRepository.findById(idUser).orElseThrow(() -> new NotFoundException("não foi possivel atualizar o endereco"));
-        endereco.setFkUser(user);
-        return enderecoRepository.save(endereco);
+    public Endereco atualizaCadEndereco(Endereco endereco) {
+        Endereco enderecoAntigo = enderecoRepository.findById(endereco.getId()).get();
+        enderecoAntigo.setGrupo(endereco.getGrupo());
+        enderecoAntigo.setCidade(endereco.getCidade());
+        enderecoAntigo.setUf(endereco.getUf());
+        enderecoAntigo.setBairro(endereco.getBairro());
+        enderecoAntigo.setNumero(endereco.getNumero());
+        enderecoAntigo.setComplemento(endereco.getComplemento());
+        enderecoAntigo.setEnderecoPrincipal(endereco.isEnderecoPrincipal());
+        return enderecoRepository.save(enderecoAntigo);
     }
 
     @Override
