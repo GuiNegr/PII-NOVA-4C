@@ -1,7 +1,17 @@
 package br.com.nova.projeto_nova.bean.dto;
 
 import br.com.nova.projeto_nova.bean.entity.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class EnderecoResponseDTO {
     private Long id;
     private String logradouro;
@@ -12,5 +22,6 @@ public class EnderecoResponseDTO {
     private String cep;
     private String uf;
     private boolean enderecoPrincipal;
+    private String grupo;
     private User fkUser;
 }

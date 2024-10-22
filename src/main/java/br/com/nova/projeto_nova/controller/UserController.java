@@ -45,6 +45,13 @@ public class UserController {
     }
 
 
+    @GetMapping("/loginComTudo")
+    public ResponseEntity<UserResponseDTO> loginComTudo(@RequestBody UserRequestDTO userRequestDTO) {
+        UserResponseDTO userResponseDTO = mapper.entidadeParaDTO(userService.login(userRequestDTO), UserResponseDTO.class);
+        return ResponseEntity.ok().body(userResponseDTO);
+    }
+
+
     @GetMapping("/buscarUser/{email}")
     public ResponseEntity<UserResponseDTO> loginComDados(@PathVariable("email") String email) {
         UserResponseDTO userResponseDTO = mapper.entidadeParaDTO(userService.getByEmail(email), UserResponseDTO.class);

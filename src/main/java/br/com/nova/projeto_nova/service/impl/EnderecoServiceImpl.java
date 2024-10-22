@@ -1,5 +1,6 @@
 package br.com.nova.projeto_nova.service.impl;
 
+import br.com.nova.projeto_nova.bean.dto.EnderecoRequestDTO;
 import br.com.nova.projeto_nova.bean.dto.EnderecoResponseDTO;
 import br.com.nova.projeto_nova.bean.entity.Endereco;
 import br.com.nova.projeto_nova.bean.entity.User;
@@ -28,6 +29,14 @@ public class EnderecoServiceImpl implements EnderecoService {
 
 
     @Override
+    public EnderecoResponseDTO cadastrarUmEndereco(EnderecoRequestDTO enderecoRequestDTO, Long id) {
+        Endereco endereco = mapper.entidadeParaDTO(enderecoRequestDTO, Endereco.class);
+        endereco.setFkUser(userRepository.findById(id).orElseThrow());
+        enderecoRepository.save(endereco);
+        return mapper.entidadeParaDTO(endereco, EnderecoResponseDTO.class);
+    }
+
+    @Override
     public List<EnderecoResponseDTO> cadastroEndereco(List<Endereco> endereco, User user) {
         List<EnderecoResponseDTO> enderecos = new ArrayList<>();
         for (int i = 0; i < endereco.size() ; i++) {
@@ -39,10 +48,16 @@ public class EnderecoServiceImpl implements EnderecoService {
     }
 
     @Override
-    public Endereco atualizaCadEndereco(Endereco endereco, Long idUser) {
-        User user = userRepository.findById(idUser).orElseThrow(() -> new NotFoundException("não foi possivel atualizar o endereco"));
-        endereco.setFkUser(user);
-        return enderecoRepository.save(endereco);
+    public Endereco atualizaCadEndereco(Endereco endereco) {
+        Endereco enderecoAntigo = enderecoRepository.findById(endereco.getId()).get();
+        enderecoAntigo.setGrupo(endereco.getGrupo());
+        enderecoAntigo.setCidade(endereco.getCidade());
+        enderecoAntigo.setUf(endereco.getUf());
+        enderecoAntigo.setBairro(endereco.getBairro());
+        enderecoAntigo.setNumero(endereco.getNumero());
+        enderecoAntigo.setComplemento(endereco.getComplemento());
+        enderecoAntigo.setEnderecoPrincipal(endereco.isEnderecoPrincipal());
+        return enderecoRepository.save(enderecoAntigo);
     }
 
     @Override
