@@ -42,7 +42,7 @@ public class Endereco {
     private boolean enderecoPrincipal;
 
 
-    @Column(name = "GRUPO_ENDERECO_NM_ENDERECI")
+    @Column(name = "GRUPO_ENDERECO_NM_ENDERECO")
     private String grupo;
     @ManyToOne
     @JoinColumn

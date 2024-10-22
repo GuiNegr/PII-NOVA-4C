@@ -1,5 +1,6 @@
 package br.com.nova.projeto_nova.service.impl;
 
+import br.com.nova.projeto_nova.bean.dto.EnderecoRequestDTO;
 import br.com.nova.projeto_nova.bean.dto.EnderecoResponseDTO;
 import br.com.nova.projeto_nova.bean.entity.Endereco;
 import br.com.nova.projeto_nova.bean.entity.User;
@@ -26,6 +27,14 @@ public class EnderecoServiceImpl implements EnderecoService {
     @Autowired
     private UserRepository userRepository;
 
+
+    @Override
+    public EnderecoResponseDTO cadastrarUmEndereco(EnderecoRequestDTO enderecoRequestDTO, Long id) {
+        Endereco endereco = mapper.entidadeParaDTO(enderecoRequestDTO, Endereco.class);
+        endereco.setFkUser(userRepository.findById(id).orElseThrow());
+        enderecoRepository.save(endereco);
+        return mapper.entidadeParaDTO(endereco, EnderecoResponseDTO.class);
+    }
 
     @Override
     public List<EnderecoResponseDTO> cadastroEndereco(List<Endereco> endereco, User user) {

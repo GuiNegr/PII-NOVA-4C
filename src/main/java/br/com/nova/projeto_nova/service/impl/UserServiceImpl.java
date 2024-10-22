@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User create(UserRequestDTO userRequestDTO) throws ConflictException {
-        String mensagem = validaDuplicidadeUsuario(userRequestDTO);
+        String mensagem = validaDuplicidadeUsuarioUpdate(userRequestDTO);
         if (mensagem != null) {
             throw new ConflictException(mensagem);
         }
@@ -90,7 +90,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User update(UserRequestDTO userRequestDTO, Long id) throws NotFoundException, ConflictException {
         User user = getById(id);
-        String mensagem = validaDuplicidadeUsuarioUpdate(userRequestDTO, id);
+        String mensagem = validaDuplicidadeUsuarioUpdate(userRequestDTO);
         if (mensagem != null) {
             throw new ConflictException(mensagem);
         }
@@ -126,9 +126,9 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
-    public String validaDuplicidadeUsuarioUpdate(UserRequestDTO userRequestDTO, Long id) {
+    public String validaDuplicidadeUsuarioUpdate(UserRequestDTO userRequestDTO) {
         User user = userRepository.findByUsuaDsCPFOrUsuaDsEmail(userRequestDTO.getUsuaDsEmail(), userRequestDTO.getUsuaDsCPF()).orElse(null);
-        if (user != null && user.getIdUsuario() != id) {
+        if (user != null) {
             return "Já existe usuário cadastrado com esse email ou CPF!";
         }
 
