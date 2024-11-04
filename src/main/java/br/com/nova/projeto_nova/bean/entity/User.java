@@ -1,6 +1,7 @@
 package br.com.nova.projeto_nova.bean.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -43,4 +44,8 @@ public class User {
 
     @Column(name = "USUA_DH_INATIVO")
     private LocalDateTime usuaDhInativo;
+
+    @OneToOne(mappedBy = "idUser", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Carrinho carrinho;
 }

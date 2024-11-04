@@ -1,5 +1,6 @@
 package br.com.nova.projeto_nova.bean.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -9,6 +10,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -42,5 +44,9 @@ public class Produto {
 
     @Column(name = "PROD_DH_INATIVO")
     private LocalDateTime prodDhInativo;
+
+    @OneToMany(mappedBy = "idProduto", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<ItensCarrinho> itensCarrinho;
 
 }
