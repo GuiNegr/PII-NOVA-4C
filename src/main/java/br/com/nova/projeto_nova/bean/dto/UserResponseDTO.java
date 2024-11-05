@@ -20,4 +20,6 @@ public class UserResponseDTO {
     private String usuaCdGrupo;
     private LocalDateTime usuaDhCadastro;
     private LocalDateTime usuaDhInativo;
+    private String usuaGenero;
+    private String usuaDataNascimento;
 }

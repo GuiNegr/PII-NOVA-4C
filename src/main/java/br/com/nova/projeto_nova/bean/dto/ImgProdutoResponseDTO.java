@@ -18,7 +18,7 @@ import java.sql.Blob;
 public class ImgProdutoResponseDTO {
     private long idImgProd;
     private long fkIdproduto;
-    private byte[] imgBlob;
+    private String imgBlob;
     private String nomeArquivos;
     private boolean imgPrincipal;
 }

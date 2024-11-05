@@ -62,17 +62,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User create(UserRequestDTO userRequestDTO) throws ConflictException {
-        String mensagem = validaDuplicidadeUsuario(userRequestDTO);
+        String mensagem = validaDuplicidadeUsuarioUpdate(userRequestDTO);
         if (mensagem != null) {
             throw new ConflictException(mensagem);
         }
 
         if(!validadores.validaCpf(userRequestDTO.getUsuaDsCPF())){
-            throw new IllegalArgumentException("CPF INVALIDO");
+            if(userRepository.existsByUsuaDsCPF(userRequestDTO.getUsuaDsCPF())){
+                throw new ConflictException("CPF INVALIDO OU JÁ PRESENTE NA NOSSA BASE");
+            }
         }
 
         if(!validadores.validaEmail(userRequestDTO.getUsuaDsEmail())){
-            throw new IllegalArgumentException("EMAIL INVALIDO");
+            throw new ConflictException("EMAIL INVALIDO");
         }
 
         String senhaEncryptada = passwordEncoder.encode(userRequestDTO.getUsuaDsPassword());
@@ -88,12 +90,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public User update(UserRequestDTO userRequestDTO, Long id) throws NotFoundException, ConflictException {
         User user = getById(id);
-        String mensagem = validaDuplicidadeUsuarioUpdate(userRequestDTO, id);
+        String mensagem = validaDuplicidadeUsuarioUpdate(userRequestDTO);
         if (mensagem != null) {
             throw new ConflictException(mensagem);
         }
-
-        userRequestDTO.setUsuaDsPassword(userRequestDTO.getUsuaDsPassword() != null ? userRequestDTO.getUsuaDsPassword() : user.getUsuaDsPassword());
+        if(!passwordEncoder.matches(user.getUsuaDsPassword(), userRequestDTO.getUsuaDsPassword()) && userRequestDTO.getUsuaDsPassword() != null){
+            userRequestDTO.setUsuaDsPassword(passwordEncoder.encode(userRequestDTO.getUsuaDsPassword()));
+        }else {
+            userRequestDTO.setUsuaDsPassword(user.getUsuaDsPassword());
+        }
         userRequestDTO.setUsuaNmUsuario(userRequestDTO.getUsuaNmUsuario() != null ? userRequestDTO.getUsuaNmUsuario() : user.getUsuaNmUsuario());
         userRequestDTO.setUsuaDsCPF(userRequestDTO.getUsuaDsCPF() != null ? userRequestDTO.getUsuaDsCPF() : user.getUsuaDsCPF());
         userRequestDTO.setUsuaCdGrupo(userRequestDTO.getUsuaCdGrupo() != null ? userRequestDTO.getUsuaCdGrupo() : user.getUsuaCdGrupo());
@@ -121,9 +126,9 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
-    public String validaDuplicidadeUsuarioUpdate(UserRequestDTO userRequestDTO, Long id) {
+    public String validaDuplicidadeUsuarioUpdate(UserRequestDTO userRequestDTO) {
         User user = userRepository.findByUsuaDsCPFOrUsuaDsEmail(userRequestDTO.getUsuaDsEmail(), userRequestDTO.getUsuaDsCPF()).orElse(null);
-        if (user != null && user.getIdUsuario() != id) {
+        if (user != null) {
             return "Já existe usuário cadastrado com esse email ou CPF!";
         }
 

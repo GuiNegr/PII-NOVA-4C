@@ -1,6 +1,7 @@
 package br.com.nova.projeto_nova.repository;
 
 
+import br.com.nova.projeto_nova.bean.dto.ImgProdutoResponseDTO;
 import br.com.nova.projeto_nova.bean.entity.ImgProduto;
 import br.com.nova.projeto_nova.bean.entity.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;

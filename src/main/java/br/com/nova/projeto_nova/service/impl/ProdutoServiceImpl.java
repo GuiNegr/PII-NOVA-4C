@@ -37,15 +37,26 @@ public class ProdutoServiceImpl implements ProdutoService {
         return this.produtoRepository.save(mapper.dtoParaEntidade(produtoRequestDTO, Produto.class));
     }
 
+
+    public Produto updateProduto(Long id, ProdutoRequestDTO produtoRequestDTO) {
+        Produto produto = this.produtoRepository.findById(id).orElseThrow();
+        produto.setNomeProduto(produtoRequestDTO.getNomeProduto());
+        produto.setAvalProduto(produtoRequestDTO.getAvalProduto());
+        produto.setPrecoProduto(produtoRequestDTO.getPrecoProduto());
+        produto.setDescDetalhadaProduto(produtoRequestDTO.getDescDetalhadaProduto());
+        produto.setIdProduto(id);
+        return this.produtoRepository.save(produto);
+    }
+
     @Override
     public Produto alterarStatus(Long id) {
-        ProdutoRequestDTO produtoRequestDTO = mapper.entidadeParaDTO(this.produtoRepository.getReferenceById(id), ProdutoRequestDTO.class);
-        if(produtoRequestDTO.getProdDhInativo() != null){
-            produtoRequestDTO.setProdDhInativo(null);
-            return this.produtoRepository.save(mapper.dtoParaEntidade(produtoRequestDTO, Produto.class));
+        ProdutoResponseDTO produtoResponseDTO = mapper.entidadeParaDTO(this.produtoRepository.findById(id).get(), ProdutoResponseDTO.class);
+        if(produtoResponseDTO.getProdDhInativo() != null){
+            produtoResponseDTO.setProdDhInativo(null);
+            return this.produtoRepository.save(mapper.dtoParaEntidade(produtoResponseDTO, Produto.class));
         }
-        produtoRequestDTO.setProdDhInativo(LocalDateTime.now());
-        return this.produtoRepository.save(mapper.dtoParaEntidade(produtoRequestDTO,Produto.class));
+        produtoResponseDTO.setProdDhInativo(LocalDateTime.now());
+        return this.produtoRepository.save(mapper.dtoParaEntidade(produtoResponseDTO,Produto.class));
     }
 
 

@@ -2,6 +2,7 @@ package br.com.nova.projeto_nova.controller;
 
 import br.com.nova.projeto_nova.bean.dto.UserRequestDTO;
 import br.com.nova.projeto_nova.bean.dto.UserResponseDTO;
+import br.com.nova.projeto_nova.bean.entity.User;
 import br.com.nova.projeto_nova.mapper.GenericMapper;
 import br.com.nova.projeto_nova.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -41,6 +42,20 @@ public class UserController {
     public ResponseEntity<String> login(@RequestBody UserRequestDTO userRequestDTO) {
         UserResponseDTO userResponseDTO = mapper.entidadeParaDTO(userService.login(userRequestDTO), UserResponseDTO.class);
         return ResponseEntity.ok().body(userResponseDTO.getUsuaCdGrupo());
+    }
+
+
+    @GetMapping("/loginComTudo")
+    public ResponseEntity<UserResponseDTO> loginComTudo(@RequestBody UserRequestDTO userRequestDTO) {
+        UserResponseDTO userResponseDTO = mapper.entidadeParaDTO(userService.login(userRequestDTO), UserResponseDTO.class);
+        return ResponseEntity.ok().body(userResponseDTO);
+    }
+
+
+    @GetMapping("/buscarUser/{email}")
+    public ResponseEntity<UserResponseDTO> loginComDados(@PathVariable("email") String email) {
+        UserResponseDTO userResponseDTO = mapper.entidadeParaDTO(userService.getByEmail(email), UserResponseDTO.class);
+        return ResponseEntity.ok().body(userResponseDTO);
     }
 
     @PutMapping("/inabilitar/{id}")
