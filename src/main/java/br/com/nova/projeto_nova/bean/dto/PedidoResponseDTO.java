@@ -2,6 +2,7 @@ package br.com.nova.projeto_nova.bean.dto;
 
 import br.com.nova.projeto_nova.bean.entity.StatusPedido;
 import br.com.nova.projeto_nova.bean.entity.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +15,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PedidoResponseDTO {
     private Long idPedido;
     private User idUser;

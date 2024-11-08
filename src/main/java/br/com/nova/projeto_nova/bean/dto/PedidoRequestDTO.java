@@ -18,6 +18,6 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class PedidoRequestDTO {
     private User idUser;
-    private List<Produto> produtos;
+    private List<ProdutoRequestDTO> produtos;
     private Double valorTotal;
 }

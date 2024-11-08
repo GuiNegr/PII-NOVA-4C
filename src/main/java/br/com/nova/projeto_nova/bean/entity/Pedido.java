@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
-import java.util.List;
 
 
 @Entity
@@ -24,9 +23,8 @@ public class Pedido {
     @JoinColumn(name = "PEDI_ID_USUA_CD_USUARIO")
     private User idUser;
 
-    @OneToMany(mappedBy = "pedidos")
-    @JoinColumn(name = "PEDI_ID_PROD_CD_PRODUTO")
-    private Produto idProduto;
+    @Column(name = "PRODUTOPEDIDO")
+    private String nomeProduto;
 
     @Column(name = "PEDI_DS_STATUSPEDIDO")
     private StatusPedido statusPedido;
@@ -37,6 +35,8 @@ public class Pedido {
     @Column(name = "PEDI_NM_VALORTOTAL")
     private Double valorTotal;
 
+    @Column(name="PEDI_NM_NUMPEDIDO")
+    private int numeroPedido;
 
 
 }

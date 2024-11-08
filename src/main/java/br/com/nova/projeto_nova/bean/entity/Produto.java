@@ -42,8 +42,4 @@ public class Produto {
     @Column(name = "PROD_DH_INATIVO")
     private LocalDateTime prodDhInativo;
 
-
-    @ManyToOne(optional = false)
-    private Pedido pedidos;
-
 }

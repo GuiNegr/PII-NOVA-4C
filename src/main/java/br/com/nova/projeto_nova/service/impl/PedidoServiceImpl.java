@@ -1,18 +1,20 @@
 package br.com.nova.projeto_nova.service.impl;
 
-import br.com.nova.projeto_nova.bean.dto.PedidoRequestDTO;
+import br.com.nova.projeto_nova.bean.dto.ProdutoRequestDTO;
 import br.com.nova.projeto_nova.bean.entity.Pedido;
 import br.com.nova.projeto_nova.bean.entity.StatusPedido;
-import br.com.nova.projeto_nova.bean.entity.User;
 import br.com.nova.projeto_nova.exception.NotFoundException;
 import br.com.nova.projeto_nova.mapper.GenericMapper;
 import br.com.nova.projeto_nova.repository.PedidoRepository;
+import br.com.nova.projeto_nova.repository.ProdutoRepository;
 import br.com.nova.projeto_nova.repository.UserRepository;
 import br.com.nova.projeto_nova.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class PedidoServiceImpl implements PedidoService {
@@ -23,6 +25,10 @@ public class PedidoServiceImpl implements PedidoService {
     GenericMapper mapper;
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    ProdutoRepository produtoRepository;
+    @Autowired
+    Random rand;
 
     @Override
     public Pedido getById(Long id){
@@ -41,14 +47,29 @@ public class PedidoServiceImpl implements PedidoService {
     }
 
     @Override
-    public Pedido criarPedido(PedidoRequestDTO pedidoRequestDTO) {
-        Pedido pedido;
-        User user = userRepository.findById(pedidoRequestDTO.getIdUser().getIdUsuario()).orElseThrow(() -> new NotFoundException("Usuário não encontrado"));
-        pedido = pedidoRepository.save(mapper.dtoParaEntidade(pedidoRequestDTO, Pedido.class));
-        pedido.setIdUser(user);
-        pedido.setStatusPedido(StatusPedido.AGUARDANDO_PAGAMENTO);
-        pedido.setDataPedido(pedidoRepository.getDate());
-        return pedidoRepository.save(pedido);
+    public List<Pedido> criarPedido(List<ProdutoRequestDTO> produtoRequestDTOS, Long idUser) {
+        List<Pedido> pedidos = new ArrayList<>();
+        for(int i = 0; i < produtoRequestDTOS.size(); i++){
+            Pedido pedido = new Pedido();
+            pedido.setIdUser(userRepository.findById(idUser).orElseThrow(() -> new NotFoundException("USER NÃO ECONTRADO")));
+
+            pedido.setStatusPedido(StatusPedido.AGUARDANDO_PAGAMENTO);
+            pedido.setNomeProduto(produtoRequestDTOS.get(i).getNomeProduto());
+            pedido.setDataPedido(pedidoRepository.getDate());
+            pedidos.add(pedido);
+        }
+
+        double num = 0;
+        for (int j = 0; j < produtoRequestDTOS.size(); j++) {
+            num += produtoRequestDTOS.get(j).getPrecoProduto().doubleValue();
+        }
+        int u = rand.nextInt(200000);
+        for (int i = 0; i < pedidos.size(); i++) {
+            pedidos.get(i).setValorTotal(num);
+            pedidos.get(i).setNumeroPedido(u);
+            pedidoRepository.save(pedidos.get(i));
+        }
+        return pedidos;
     }
 
     @Override

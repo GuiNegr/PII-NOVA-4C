@@ -2,7 +2,9 @@ package br.com.nova.projeto_nova.controller;
 
 import br.com.nova.projeto_nova.bean.dto.PedidoRequestDTO;
 import br.com.nova.projeto_nova.bean.dto.PedidoResponseDTO;
+import br.com.nova.projeto_nova.bean.dto.ProdutoRequestDTO;
 import br.com.nova.projeto_nova.bean.entity.Pedido;
+import br.com.nova.projeto_nova.bean.entity.Produto;
 import br.com.nova.projeto_nova.mapper.GenericMapper;
 
 import br.com.nova.projeto_nova.service.PedidoService;
@@ -33,9 +35,9 @@ public class PedidoController {
         return ResponseEntity.ok(mapper.entidadeParaDTO(pedidoService.getById(id), PedidoResponseDTO.class));
     }
 
-    @PostMapping
-    public ResponseEntity<PedidoResponseDTO> criarPedido(@RequestBody PedidoRequestDTO pedidoRequestDTO) {
-        return ResponseEntity.ok(mapper.entidadeParaDTO(pedidoService.criarPedido(pedidoRequestDTO), PedidoResponseDTO.class));
+    @PostMapping("/{id}")
+    public ResponseEntity<List<PedidoResponseDTO>> criarPedido(@RequestBody List<ProdutoRequestDTO> produtoRequestDTO,@PathVariable Long id) {
+        return ResponseEntity.ok(mapper.entidadeParaDTO(pedidoService.criarPedido(produtoRequestDTO,id),PedidoResponseDTO.class));
     }
 
     @PutMapping("/altStatus/{id}")
