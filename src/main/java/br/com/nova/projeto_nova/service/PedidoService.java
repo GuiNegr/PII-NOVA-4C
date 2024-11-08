@@ -3,9 +3,11 @@ package br.com.nova.projeto_nova.service;
 import br.com.nova.projeto_nova.bean.dto.PedidoRequestDTO;
 import br.com.nova.projeto_nova.bean.entity.Pedido;
 
+import java.util.List;
+
 public interface PedidoService {
     Pedido getById(Long id);
-    Pedido alterarPedido(Long id, PedidoRequestDTO pedidoRequestDTO);
-    Pedido salvar(Pedido pedido);
+    Pedido alterarStatusPedido(Long id);
     Pedido criarPedido(PedidoRequestDTO pedidoRequestDTO);
+    List<Pedido> listarPedidos();
 }

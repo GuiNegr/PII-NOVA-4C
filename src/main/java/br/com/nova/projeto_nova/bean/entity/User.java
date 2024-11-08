@@ -44,10 +44,6 @@ public class User {
     @Column(name = "USUA_DH_INATIVO")
     private LocalDateTime usuaDhInativo;
 
-    @OneToOne(mappedBy = "idUser", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private Carrinho carrinho;
-
     @Column(name = "USUA_CD_GENERO")
     private String usuaGenero;
 

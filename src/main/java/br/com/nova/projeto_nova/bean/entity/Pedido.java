@@ -4,9 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.time.LocalDateTime;
 import java.util.List;
+
 
 @Entity
 @Data
@@ -24,6 +24,10 @@ public class Pedido {
     @JoinColumn(name = "PEDI_ID_USUA_CD_USUARIO")
     private User idUser;
 
+    @OneToMany(mappedBy = "pedidos")
+    @JoinColumn(name = "PEDI_ID_PROD_CD_PRODUTO")
+    private Produto idProduto;
+
     @Column(name = "PEDI_DS_STATUSPEDIDO")
     private StatusPedido statusPedido;
 
@@ -33,8 +37,6 @@ public class Pedido {
     @Column(name = "PEDI_NM_VALORTOTAL")
     private Double valorTotal;
 
-    @OneToMany(mappedBy = "idPedido", cascade = CascadeType.ALL)
-    private List<ItensPedido> itensPedidos;
 
 
 }

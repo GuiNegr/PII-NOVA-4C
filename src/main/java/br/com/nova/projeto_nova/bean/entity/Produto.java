@@ -1,16 +1,12 @@
 package br.com.nova.projeto_nova.bean.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @Entity
@@ -18,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name="CDTB_PRODUTO_PROD")
 public class Produto {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_PROD_CD_PRODUTO")
@@ -35,7 +32,7 @@ public class Produto {
     @Column(name="PROD_NR_QUANTIDADE", nullable = false)
     private int qtdEstoqueProduto;
 
-    @Column(name="PROD_NR_AVAL",nullable = false)
+    @Column(name="PROD_NR_AVAL", nullable = false)
     private Double avalProduto;
 
     @CreationTimestamp
@@ -45,8 +42,8 @@ public class Produto {
     @Column(name = "PROD_DH_INATIVO")
     private LocalDateTime prodDhInativo;
 
-    @OneToMany(mappedBy = "idProduto", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<ItensCarrinho> itensCarrinho;
+
+    @ManyToOne(optional = false)
+    private Pedido pedidos;
 
 }

@@ -1,9 +1,7 @@
 package br.com.nova.projeto_nova.bean.dto;
 
-import br.com.nova.projeto_nova.bean.entity.ItensPedido;
 import br.com.nova.projeto_nova.bean.entity.StatusPedido;
 import br.com.nova.projeto_nova.bean.entity.User;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,8 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 public class PedidoResponseDTO {
     private Long idPedido;
-    private Long idUser;
-    private List<ItensPedidoRequestDTO> itensPedidos;
+    private User idUser;
     private Double valorTotal;
     private StatusPedido statusPedido;
     private LocalDateTime dataPedido;
