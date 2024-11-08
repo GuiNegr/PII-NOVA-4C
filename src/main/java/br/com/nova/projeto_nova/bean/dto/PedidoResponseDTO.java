@@ -18,6 +18,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PedidoResponseDTO {
     private Long idPedido;
+    private int numeroPedido;
     private User idUser;
     private Double valorTotal;
     private StatusPedido statusPedido;
