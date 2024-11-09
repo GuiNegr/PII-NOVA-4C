@@ -25,9 +25,9 @@ public class PedidoController {
     @Autowired
     private final GenericMapper mapper;
 
-    @GetMapping("/listAll")
-    public ResponseEntity<List<PedidoResponseDTO>> listarPedidos(){
-        return ResponseEntity.ok(mapper.entidadeParaDTO(pedidoService.listarPedidos(), PedidoResponseDTO.class));
+    @GetMapping("/listById/{id}")
+    public ResponseEntity<List<PedidoResponseDTO>> listarPedidos(@PathVariable Long id){
+        return ResponseEntity.ok(mapper.entidadeParaDTO(pedidoService.listarPedidos(id), PedidoResponseDTO.class));
     }
 
     @GetMapping("/{id}")

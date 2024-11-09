@@ -73,7 +73,7 @@ public class PedidoServiceImpl implements PedidoService {
     }
 
     @Override
-    public List<Pedido> listarPedidos() {
-        return pedidoRepository.findAll();
+    public List<Pedido> listarPedidos(Long id) {
+        return pedidoRepository.findByIdUser(userRepository.findById(id).orElseThrow());
     }
 }

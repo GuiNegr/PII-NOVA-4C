@@ -10,5 +10,5 @@ public interface PedidoService {
     Pedido getById(Long id);
     Pedido alterarStatusPedido(Long id);
     List<Pedido> criarPedido(List<ProdutoRequestDTO> produtoRequestDTOS, Long idUser);
-    List<Pedido> listarPedidos();
+    List<Pedido> listarPedidos(Long idUser);
 }
