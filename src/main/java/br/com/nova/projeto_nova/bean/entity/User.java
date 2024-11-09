@@ -1,9 +1,9 @@
 package br.com.nova.projeto_nova.bean.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -49,5 +49,5 @@ public class User {
 
     @Column(name = "USUA_CD_NASCIMENTO")
     private String usuaDataNascimento;
-    
+
 }

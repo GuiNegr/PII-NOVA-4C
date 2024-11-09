@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class ProdutoRequestDTO {
+    private Long idProduto;
     private String nomeProduto;
     private String descDetalhadaProduto;
     private BigDecimal precoProduto;

@@ -24,7 +24,7 @@ public class DataInitializer implements CommandLineRunner {
     public void run(String... args) throws Exception {
         User adm = new User();
         adm.setUsuaNmUsuario("ADM");
-        adm.setUsuaDsEmail("adm@gmail.com");
+        adm.setUsuaDsEmail("adm@adm.com");
         adm.setUsuaDsPassword("adm123");
         adm.setUsuaDsCPF("720.455.910-00");
         adm.setUsuaCdGrupo("Administrador");
