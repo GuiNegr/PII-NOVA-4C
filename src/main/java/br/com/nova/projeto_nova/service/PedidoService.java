@@ -9,6 +9,6 @@ import java.util.List;
 public interface PedidoService {
     Pedido getById(Long id);
     Pedido alterarStatusPedido(Long id);
-    List<Pedido> criarPedido(List<ProdutoRequestDTO> produtoRequestDTOS, Long idUser);
+    List<Pedido> criarPedido(List<ProdutoRequestDTO> produtoRequestDTOS, Long idUser,double frete);
     List<Pedido> listarPedidos(Long idUser);
 }

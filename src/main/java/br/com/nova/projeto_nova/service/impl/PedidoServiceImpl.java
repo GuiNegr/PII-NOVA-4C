@@ -47,7 +47,7 @@ public class PedidoServiceImpl implements PedidoService {
     }
 
     @Override
-    public List<Pedido> criarPedido(List<ProdutoRequestDTO> produtoRequestDTOS, Long idUser) {
+    public List<Pedido> criarPedido(List<ProdutoRequestDTO> produtoRequestDTOS, Long idUser,double frete) {
         List<Pedido> pedidos = new ArrayList<>();
         for(int i = 0; i < produtoRequestDTOS.size(); i++){
             Pedido pedido = new Pedido();
@@ -63,6 +63,7 @@ public class PedidoServiceImpl implements PedidoService {
         for (int j = 0; j < produtoRequestDTOS.size(); j++) {
             num += produtoRequestDTOS.get(j).getPrecoProduto().doubleValue();
         }
+        num += frete;
         int u = rand.nextInt(200000);
         for (int i = 0; i < pedidos.size(); i++) {
             pedidos.get(i).setValorTotal(num);
