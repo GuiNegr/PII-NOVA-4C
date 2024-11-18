@@ -51,4 +51,9 @@ public class EnderecoController {
         Endereco enderecoResponse = enderecoService.atualizaCadEndereco(endereco);
         return ResponseEntity.ok().body(genericMapper.entidadeParaDTO(enderecoResponse,EnderecoResponseDTO.class));
     }
+
+    @GetMapping("/ListarUmEndereco/{id}")
+    public ResponseEntity<EnderecoResponseDTO> listarUmEndereco(@PathVariable("id") Long id){
+        return ResponseEntity.ok().body(enderecoService.buscarUmEndereco(id));
+    }
 }

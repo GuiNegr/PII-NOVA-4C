@@ -1,10 +1,12 @@
 package br.com.nova.projeto_nova.service.impl;
 
+import br.com.nova.projeto_nova.bean.dto.PedidoResponseDTO;
 import br.com.nova.projeto_nova.bean.dto.ProdutoRequestDTO;
 import br.com.nova.projeto_nova.bean.entity.Pedido;
 import br.com.nova.projeto_nova.bean.entity.StatusPedido;
 import br.com.nova.projeto_nova.exception.NotFoundException;
 import br.com.nova.projeto_nova.mapper.GenericMapper;
+import br.com.nova.projeto_nova.repository.EnderecoRepository;
 import br.com.nova.projeto_nova.repository.PedidoRepository;
 import br.com.nova.projeto_nova.repository.ProdutoRepository;
 import br.com.nova.projeto_nova.repository.UserRepository;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @Service
 public class PedidoServiceImpl implements PedidoService {
@@ -27,6 +30,10 @@ public class PedidoServiceImpl implements PedidoService {
     UserRepository userRepository;
     @Autowired
     ProdutoRepository produtoRepository;
+
+    @Autowired
+    EnderecoRepository enderecoRepository;
+
     @Autowired
     Random rand;
 
@@ -47,12 +54,12 @@ public class PedidoServiceImpl implements PedidoService {
     }
 
     @Override
-    public List<Pedido> criarPedido(List<ProdutoRequestDTO> produtoRequestDTOS, Long idUser,double frete) {
+    public List<Pedido> criarPedido(List<ProdutoRequestDTO> produtoRequestDTOS, Long idUser,double frete,Long idPedido) {
         List<Pedido> pedidos = new ArrayList<>();
         for(int i = 0; i < produtoRequestDTOS.size(); i++){
             Pedido pedido = new Pedido();
             pedido.setIdUser(userRepository.findById(idUser).orElseThrow(() -> new NotFoundException("USER NÃO ECONTRADO")));
-
+            pedido.setFkEndereco(enderecoRepository.findById(idPedido).orElseThrow());
             pedido.setStatusPedido(StatusPedido.AGUARDANDO_PAGAMENTO);
             pedido.setNomeProduto(produtoRequestDTOS.get(i).getNomeProduto());
             pedido.setDataPedido(pedidoRepository.getDate());
@@ -76,5 +83,13 @@ public class PedidoServiceImpl implements PedidoService {
     @Override
     public List<Pedido> listarPedidos(Long id) {
         return pedidoRepository.findByIdUser(userRepository.findById(id).orElseThrow());
+    }
+
+    @Override
+    public List<PedidoResponseDTO> listarPedidos() {
+        List<Pedido> pedidoList = pedidoRepository.findAll();
+        pedidoList.stream().sorted((p1,p2) -> p2.getDataPedido().compareTo(p1.getDataPedido())).collect(Collectors.toList());
+        List<PedidoResponseDTO> pedidoResponseDTOList = mapper.entidadeParaDTO(pedidoList,PedidoResponseDTO.class);
+        return pedidoResponseDTOList;
     }
 }
