@@ -38,5 +38,9 @@ public class Pedido {
     @Column(name="PEDI_NM_NUMPEDIDO")
     private int numeroPedido;
 
+    @ManyToOne
+    @JoinColumn
+    private Endereco fkEndereco;
+
 
 }

@@ -35,7 +35,7 @@ public class Endereco {
     @Column(name = "CIDADE_NM_ENDERECO", nullable = false)
     private String cidade;
 
-    @Column(name= "UF_NM_ENDERECO" , nullable = false)
+    @Column(name = "UF_NM_ENDERECO", nullable = false)
     private String uf;
 
     @Column(name = "ENDERECO_PRINCIPAL_NM_ENDERECO")
@@ -44,7 +44,9 @@ public class Endereco {
 
     @Column(name = "GRUPO_ENDERECO_NM_ENDERECO")
     private String grupo;
+
     @ManyToOne
     @JoinColumn
     private User fkUser;
 }
+

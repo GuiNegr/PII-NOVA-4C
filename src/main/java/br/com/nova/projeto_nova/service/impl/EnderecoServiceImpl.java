@@ -70,4 +70,9 @@ public class EnderecoServiceImpl implements EnderecoService {
         }
         return enderecoResponseDTOS;
     }
+
+    @Override
+    public EnderecoResponseDTO buscarUmEndereco(Long idendereco) {
+        return mapper.entidadeParaDTO(enderecoRepository.findById(idendereco),EnderecoResponseDTO.class);
+    }
 }

@@ -13,4 +13,5 @@ public interface EnderecoService {
     List<EnderecoResponseDTO> cadastroEndereco(List<Endereco> endereco, User user);
     Endereco atualizaCadEndereco(Endereco endereco);
     List<EnderecoResponseDTO>listarEndereco(User user);
+    EnderecoResponseDTO buscarUmEndereco(Long idendereco);
 }
