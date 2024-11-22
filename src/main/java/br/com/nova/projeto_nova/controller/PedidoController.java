@@ -21,9 +21,9 @@ import java.util.List;
 public class PedidoController {
 
     @Autowired
-    private final PedidoService pedidoService;
+    private PedidoService pedidoService;
     @Autowired
-    private final GenericMapper mapper;
+    private  GenericMapper mapper;
 
     @GetMapping("/listById/{id}")
     public ResponseEntity<List<PedidoResponseDTO>> listarPedidos(@PathVariable Long id){

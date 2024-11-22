@@ -8,7 +8,6 @@ import br.com.nova.projeto_nova.exception.NotFoundException;
 import br.com.nova.projeto_nova.mapper.GenericMapper;
 import br.com.nova.projeto_nova.repository.EnderecoRepository;
 import br.com.nova.projeto_nova.repository.PedidoRepository;
-import br.com.nova.projeto_nova.repository.ProdutoRepository;
 import br.com.nova.projeto_nova.repository.UserRepository;
 import br.com.nova.projeto_nova.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,19 +22,15 @@ import java.util.stream.Collectors;
 public class PedidoServiceImpl implements PedidoService {
 
     @Autowired
-    PedidoRepository pedidoRepository;
+    private PedidoRepository pedidoRepository;
     @Autowired
-    GenericMapper mapper;
+    private GenericMapper mapper;
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
     @Autowired
-    ProdutoRepository produtoRepository;
-
+    private EnderecoRepository enderecoRepository;
     @Autowired
-    EnderecoRepository enderecoRepository;
-
-    @Autowired
-    Random rand;
+    private Random rand;
 
     @Override
     public Pedido getById(Long id){
