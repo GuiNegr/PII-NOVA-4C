@@ -21,9 +21,9 @@ import java.util.List;
 public class PedidoController {
 
     @Autowired
-    private final PedidoService pedidoService;
+    private PedidoService pedidoService;
     @Autowired
-    private final GenericMapper mapper;
+    private  GenericMapper mapper;
 
     @GetMapping("/listById/{id}")
     public ResponseEntity<List<PedidoResponseDTO>> listarPedidos(@PathVariable Long id){
@@ -36,13 +36,15 @@ public class PedidoController {
     }
 
     @PostMapping("/{id}")
-    public ResponseEntity<List<PedidoResponseDTO>> criarPedido(@RequestBody List<ProdutoRequestDTO> produtoRequestDTO,@PathVariable Long id,@RequestParam double frete,@RequestParam Long endereco) {
-        return ResponseEntity.ok(mapper.entidadeParaDTO(pedidoService.criarPedido(produtoRequestDTO,id,frete,endereco),PedidoResponseDTO.class));
+    public ResponseEntity<List<PedidoResponseDTO>> criarPedido(@RequestBody List<ProdutoRequestDTO> produtoRequestDTO,@PathVariable Long id,
+                                                               @RequestParam double frete,
+                                                               @RequestParam Long endereco, @RequestParam String pagamento) {
+        return ResponseEntity.ok(mapper.entidadeParaDTO(pedidoService.criarPedido(produtoRequestDTO,id,frete,endereco,pagamento),PedidoResponseDTO.class));
     }
 
     @PutMapping("/altStatus/{id}")
-    public ResponseEntity<PedidoResponseDTO> alterarStatusPedido(@PathVariable Long id) {
-        return ResponseEntity.ok(mapper.entidadeParaDTO(pedidoService.alterarStatusPedido(id), PedidoResponseDTO.class));
+    public ResponseEntity<PedidoResponseDTO> alterarStatusPedido(@PathVariable Long id, @RequestParam String status) {
+        return ResponseEntity.ok(mapper.entidadeParaDTO(pedidoService.alterarStatusPedido(id, status), PedidoResponseDTO.class));
     }
 
     @GetMapping("/listarPelaData")

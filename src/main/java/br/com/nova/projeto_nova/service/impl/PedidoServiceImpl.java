@@ -8,7 +8,6 @@ import br.com.nova.projeto_nova.exception.NotFoundException;
 import br.com.nova.projeto_nova.mapper.GenericMapper;
 import br.com.nova.projeto_nova.repository.EnderecoRepository;
 import br.com.nova.projeto_nova.repository.PedidoRepository;
-import br.com.nova.projeto_nova.repository.ProdutoRepository;
 import br.com.nova.projeto_nova.repository.UserRepository;
 import br.com.nova.projeto_nova.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,19 +22,15 @@ import java.util.stream.Collectors;
 public class PedidoServiceImpl implements PedidoService {
 
     @Autowired
-    PedidoRepository pedidoRepository;
+    private PedidoRepository pedidoRepository;
     @Autowired
-    GenericMapper mapper;
+    private GenericMapper mapper;
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
     @Autowired
-    ProdutoRepository produtoRepository;
-
+    private EnderecoRepository enderecoRepository;
     @Autowired
-    EnderecoRepository enderecoRepository;
-
-    @Autowired
-    Random rand;
+    private Random rand;
 
     @Override
     public Pedido getById(Long id){
@@ -43,18 +38,26 @@ public class PedidoServiceImpl implements PedidoService {
     }
 
     @Override
-    public Pedido alterarStatusPedido(Long id) {
+    public Pedido alterarStatusPedido(Long id, String status) {
         Pedido pedido = pedidoRepository.findById(id).orElseThrow(() -> new NotFoundException("Pedido não encontrado"));
-        if (pedido.getStatusPedido().equals(StatusPedido.CANCELADO)) {
+        if (status.equalsIgnoreCase("Aguardando Pagamento")) {
             pedido.setStatusPedido(StatusPedido.AGUARDANDO_PAGAMENTO);
+        } else if (status.equalsIgnoreCase("Em Transito")) {
+            pedido.setStatusPedido(StatusPedido.EM_TRANSITO);
+        } else if (status.equalsIgnoreCase("Pagamento Rejeitado")) {
+            pedido.setStatusPedido(StatusPedido.PAGAMENTO_REJEITADO);
+        } else if (status.equalsIgnoreCase("Pagamento com Sucesso")) {
+            pedido.setStatusPedido(StatusPedido.PAGAMENTO_COM_SUCESSO);
+        } else if (status.equalsIgnoreCase("Aguardando Retirada")) {
+            pedido.setStatusPedido(StatusPedido.AGUARDANDO_RETIRADA);
         } else {
-            pedido.setStatusPedido(StatusPedido.CANCELADO);
+            pedido.setStatusPedido(StatusPedido.ENTREGUE);
         }
         return pedidoRepository.save(pedido);
     }
 
     @Override
-    public List<Pedido> criarPedido(List<ProdutoRequestDTO> produtoRequestDTOS, Long idUser,double frete,Long idPedido) {
+    public List<Pedido> criarPedido(List<ProdutoRequestDTO> produtoRequestDTOS, Long idUser,double frete,Long idPedido,String pagamento) {
         List<Pedido> pedidos = new ArrayList<>();
         for(int i = 0; i < produtoRequestDTOS.size(); i++){
             Pedido pedido = new Pedido();
@@ -63,6 +66,10 @@ public class PedidoServiceImpl implements PedidoService {
             pedido.setStatusPedido(StatusPedido.AGUARDANDO_PAGAMENTO);
             pedido.setNomeProduto(produtoRequestDTOS.get(i).getNomeProduto());
             pedido.setDataPedido(pedidoRepository.getDate());
+            pedido.setNomeProduto(produtoRequestDTOS.get(i).getNomeProduto());
+            pedido.setFormaDePagamento(pagamento);
+            pedido.setValorFrete(frete);
+            pedido.setValorUnitario(produtoRequestDTOS.get(i).getPrecoProduto());
             pedidos.add(pedido);
         }
 
