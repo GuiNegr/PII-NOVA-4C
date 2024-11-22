@@ -40,17 +40,17 @@ public class PedidoServiceImpl implements PedidoService {
     @Override
     public Pedido alterarStatusPedido(Long id, String status) {
         Pedido pedido = pedidoRepository.findById(id).orElseThrow(() -> new NotFoundException("Pedido não encontrado"));
-        if (status.equalsIgnoreCase("Aguardando Pagamento")) {
+        if (status.equalsIgnoreCase("AGUARDANDO_PAGAMENTO")) {
             pedido.setStatusPedido(StatusPedido.AGUARDANDO_PAGAMENTO);
-        } else if (status.equalsIgnoreCase("Em Transito")) {
+        } else if (status.equalsIgnoreCase("EM_TRANSITO")) {
             pedido.setStatusPedido(StatusPedido.EM_TRANSITO);
-        } else if (status.equalsIgnoreCase("Pagamento Rejeitado")) {
+        } else if (status.equalsIgnoreCase("PAGAMENTO_REJEITADO")) {
             pedido.setStatusPedido(StatusPedido.PAGAMENTO_REJEITADO);
-        } else if (status.equalsIgnoreCase("Pagamento com Sucesso")) {
+        } else if (status.equalsIgnoreCase("PAGAMENTO_COM_SUCESSO")) {
             pedido.setStatusPedido(StatusPedido.PAGAMENTO_COM_SUCESSO);
-        } else if (status.equalsIgnoreCase("Aguardando Retirada")) {
+        } else if (status.equalsIgnoreCase("AGUARDANDO_RETIRADA")) {
             pedido.setStatusPedido(StatusPedido.AGUARDANDO_RETIRADA);
-        } else {
+        } else if (status.equalsIgnoreCase("ENTREGUE")) {
             pedido.setStatusPedido(StatusPedido.ENTREGUE);
         }
         return pedidoRepository.save(pedido);
