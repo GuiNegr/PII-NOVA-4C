@@ -62,7 +62,7 @@ public class PedidoServiceImpl implements PedidoService {
     }
 
     @Override
-    public List<Pedido> criarPedido(List<ProdutoRequestDTO> produtoRequestDTOS, Long idUser,double frete,Long idPedido) {
+    public List<Pedido> criarPedido(List<ProdutoRequestDTO> produtoRequestDTOS, Long idUser,double frete,Long idPedido,String pagamento) {
         List<Pedido> pedidos = new ArrayList<>();
         for(int i = 0; i < produtoRequestDTOS.size(); i++){
             Pedido pedido = new Pedido();
@@ -71,6 +71,10 @@ public class PedidoServiceImpl implements PedidoService {
             pedido.setStatusPedido(StatusPedido.AGUARDANDO_PAGAMENTO);
             pedido.setNomeProduto(produtoRequestDTOS.get(i).getNomeProduto());
             pedido.setDataPedido(pedidoRepository.getDate());
+            pedido.setNomeProduto(produtoRequestDTOS.get(i).getNomeProduto());
+            pedido.setFormaDePagamento(pagamento);
+            pedido.setValorFrete(frete);
+            pedido.setValorUnitario(produtoRequestDTOS.get(i).getPrecoProduto());
             pedidos.add(pedido);
         }
 

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 
@@ -37,6 +39,18 @@ public class Pedido {
 
     @Column(name="PEDI_NM_NUMPEDIDO")
     private int numeroPedido;
+
+    @Column(name="PEDI_NM_FORMAPAGAMENTO")
+    private String formaDePagamento;
+
+    @Column(name="PEDI_NM_VALORUNITARIO")
+    private BigDecimal valorUnitario;
+
+    @Column(name="PEDI_NM_QTD")
+    private int quantidade;
+
+    @Column(name="PEDI_NM_FRETE")
+    private Double valorFrete;
 
     @ManyToOne
     @JoinColumn

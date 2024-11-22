@@ -36,8 +36,10 @@ public class PedidoController {
     }
 
     @PostMapping("/{id}")
-    public ResponseEntity<List<PedidoResponseDTO>> criarPedido(@RequestBody List<ProdutoRequestDTO> produtoRequestDTO,@PathVariable Long id,@RequestParam double frete,@RequestParam Long endereco) {
-        return ResponseEntity.ok(mapper.entidadeParaDTO(pedidoService.criarPedido(produtoRequestDTO,id,frete,endereco),PedidoResponseDTO.class));
+    public ResponseEntity<List<PedidoResponseDTO>> criarPedido(@RequestBody List<ProdutoRequestDTO> produtoRequestDTO,@PathVariable Long id,
+                                                               @RequestParam double frete,
+                                                               @RequestParam Long endereco, @RequestParam String pagamento) {
+        return ResponseEntity.ok(mapper.entidadeParaDTO(pedidoService.criarPedido(produtoRequestDTO,id,frete,endereco,pagamento),PedidoResponseDTO.class));
     }
 
     @PutMapping("/altStatus/{id}")
