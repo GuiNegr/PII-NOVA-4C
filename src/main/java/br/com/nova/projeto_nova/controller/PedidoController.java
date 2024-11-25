@@ -43,8 +43,8 @@ public class PedidoController {
     }
 
     @PutMapping("/altStatus/{id}")
-    public ResponseEntity<PedidoResponseDTO> alterarStatusPedido(@PathVariable Long id, @RequestParam String status) {
-        return ResponseEntity.ok(mapper.entidadeParaDTO(pedidoService.alterarStatusPedido(id, status), PedidoResponseDTO.class));
+    public ResponseEntity<PedidoResponseDTO> alterarStatusPedido(@PathVariable Long id, @RequestBody String newStatus) {
+        return ResponseEntity.ok(mapper.entidadeParaDTO(pedidoService.alterarStatusPedido(id, newStatus), PedidoResponseDTO.class));
     }
 
     @GetMapping("/listarPelaData")
